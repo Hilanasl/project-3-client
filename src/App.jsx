@@ -10,21 +10,19 @@ import SignUp from "./Pages/SignUp";
 import Profile from "./Pages/Profile";
 import TripForm from "./Pages/TripForm";
 // import PrivateRoute from "./Components/PrivateRoute";
-import apiHandler from '../../project-3-client/src/api/apiHandler'
+import apiHandler from "./api/apiHandler";
 
 function App() {
-
   const [trips, setTrips] = useState([]);
-    
+
   useEffect(() => {
     apiHandler
-      .get('http://localhost:8000/trips')
-      .then (({ data }) => {
-        setTrips(data)
+      .get("http://localhost:8000/trips")
+      .then(({ data }) => {
+        setTrips(data);
       })
       .catch((err) => console.error(err));
   }, []);
-
 
   return (
     <div className="App">
