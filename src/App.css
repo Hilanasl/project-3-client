@@ -40,3 +40,26 @@
 button {
   font-size: calc(10px + 2vmin);
 }
+
+img {
+  max-width: 250px
+}
+
+.container {
+  display: flex;
+  max-height: 90vh; 
+  width: 90vw;
+  overflow: scroll;
+}
+
+.trip {
+  min-width: 20vw;
+  border: 1px solid lightblue;
+  margin: 5px
+}
+
+.daynumber {
+  font-weight: bold;
+  font-size: 20px;
+  color: rgb(184, 64, 64);
+}

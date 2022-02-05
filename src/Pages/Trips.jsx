@@ -6,6 +6,8 @@ const Trips = ({trips}) => {
   if(!trips) return <div>Loading</div>
 
 
+
+
   return (
     <div>
       <h1>Trips List</h1>
@@ -14,10 +16,15 @@ const Trips = ({trips}) => {
           return (
             <div className='trip' key={trip._id}>
             <p>{trip.title}</p>
+            <p>Location: {trip.location}</p>
+            <p>{trip.description}</p>
+            <p>Contributor: {trip.author.username}</p>
+            <img src={trip.image[0]} alt=''/>
+            <p class='daynumber'>Days: {trip.days.length}</p>
             </div>
           )
         })}
-      </div>
+    </div>
     </div>
   )
 };

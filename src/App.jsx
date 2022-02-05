@@ -20,7 +20,6 @@ function App() {
     apiHandler
       .get('http://localhost:8000/trips')
       .then (({ data }) => {
-        console.log('hi', data);
         setTrips(data)
       })
       .catch((err) => console.error(err));
