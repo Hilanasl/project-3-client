@@ -54,12 +54,21 @@ img {
 
 .trip {
   min-width: 20vw;
-  border: 1px solid lightblue;
-  margin: 5px
+  border: 2px solid lightblue;
+  margin: 5px;
+  background-color: rgb(233, 240, 240);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .daynumber {
   font-weight: bold;
   font-size: 20px;
   color: rgb(184, 64, 64);
+}
+
+.carousel img {
+  max-width: 400px
 }

@@ -7,7 +7,7 @@ const Trips = ({ trips }) => {
 
   return (
     <div>
-      <h1>Trips List</h1>
+      <h1>Trips</h1>
       <div className="container">
         {trips.map((trip) => {
           return (
