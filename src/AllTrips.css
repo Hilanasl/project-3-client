@@ -21,7 +21,7 @@
     color: rgb(48, 47, 47)
 }
 
-.container {
+.tripscontainer {
     display: flex;
     max-height: 90vh; 
     width: 95vw;
@@ -92,5 +92,3 @@
   .filters {
       display: flex
   }
-
-
