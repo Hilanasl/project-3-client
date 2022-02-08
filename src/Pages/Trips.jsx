@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Search from "./../Components/Search";
 import FilterCats from "../Components/FilterCats";
 import FilterDays from "../Components/FilterDays";
-import "./../AllTrips.css";
+import './../AllTrips.css'
 
 const Trips = ({ trips }) => {
   const [searchedString, setSearchedString] = useState("");
@@ -123,7 +123,7 @@ const Trips = ({ trips }) => {
 
       <p className="instruct">Click on a trip to see the full itinerary</p>
 
-      <div className="container">
+      <div className="tripscontainer">
         {searchedTrips.map((trip) => {
           return (
             <div className="trip" key={trip._id}>
