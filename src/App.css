@@ -1,3 +1,5 @@
+/* @import url('<link href="https://fonts.googleapis.com/css2?family=Domine:wght@500&display=swap" rel="stylesheet">'); */
+
 .App {
   text-align: center;
 }
@@ -41,25 +43,16 @@ button {
   font-size: calc(10px + 2vmin);
 }
 
-img {
-  max-width: 250px
-}
-
-.container {
+.navbar {
+  min-height: 2.5vw;
   display: flex;
-  max-height: 90vh; 
-  width: 90vw;
-  overflow: scroll;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgb(216, 214, 196);
 }
 
-.trip {
-  min-width: 20vw;
-  border: 1px solid lightblue;
-  margin: 5px
-}
-
-.daynumber {
-  font-weight: bold;
+.navbar a {
+  text-decoration: none;
   font-size: 20px;
-  color: rgb(184, 64, 64);
+  color: rgb(0, 15, 5);
 }
