@@ -11,6 +11,7 @@ import Profile from "./Pages/Profile";
 import TripForm from "./Pages/TripForm";
 // import PrivateRoute from "./Components/PrivateRoute";
 import apiHandler from "./api/apiHandler";
+import Carousel from "./Components/Carousel";
 
 function App() {
   const [trips, setTrips] = useState([]);
@@ -30,7 +31,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/trips" element={<Trips trips={trips} />} />
-        <Route path="/trips/:id" element={<TripDetails trips={trips}/>} />
+        <Route path="/trips/:id" element={<TripDetails trips={trips} />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/profile" element={<Profile />} />

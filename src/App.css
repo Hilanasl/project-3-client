@@ -1,3 +1,5 @@
+/* @import url('<link href="https://fonts.googleapis.com/css2?family=Domine:wght@500&display=swap" rel="stylesheet">'); */
+
 .App {
   text-align: center;
 }
@@ -41,13 +43,13 @@ button {
   font-size: calc(10px + 2vmin);
 }
 
-img {
-  max-width: 250px
+.trip img {
+  max-width: 250px;
 }
 
 .container {
   display: flex;
-  max-height: 90vh; 
+  max-height: 90vh;
   width: 90vw;
   overflow: scroll;
 }
@@ -69,6 +71,47 @@ img {
   color: rgb(184, 64, 64);
 }
 
-.carousel img {
-  max-width: 400px
+.numberBlock {
+  font-size: 50px;
+  width: 150px;
+  height: inherit;
+  background-color: #485e8b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  font-family: "Domine", serif;
+}
+
+.containerDetails {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+  background-color: #b1dabd;
+  border-radius: 5px;
+}
+
+.infosBlock {
+  padding-top: 15px;
+  padding-left: 10px;
+  padding-right: 20px;
+  text-align: left;
+  /* font-family: "Montserrat", sans-serif; */
+  font-family: "Open Sans", sans-serif;
+}
+
+.containerWrapper {
+  margin-bottom: 40px;
+  margin-top: 40px;
+}
+
+.biggerPic {
+  width: 75%;
+}
+
+.detailsHeader {
+  padding: 20px 0px;
+  font-family: "Domine", serif;
+  line-height: 2em;
 }

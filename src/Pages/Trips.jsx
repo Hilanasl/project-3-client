@@ -18,7 +18,7 @@ const Trips = ({ trips }) => {
               <p>Location: {trip.location}</p>
               <p>{trip.description}</p>
               <p>Contributor: {trip.author.username}</p>
-              <img src={trip.image[0]} alt="" />
+              <img className="mainPics" src={trip.image[0]} alt="" />
               <p className="daynumber">Days: {trip.days.length}</p>
             </div>
           );
