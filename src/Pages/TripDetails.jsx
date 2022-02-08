@@ -4,6 +4,7 @@ import apiHandler from "./../api/apiHandler";
 import Carousel from "../Components/Carousel";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
+import styles from "./TripDetails.module.css";
 
 const TripDetails = () => {
   const [trip, setTrip] = useState({});
@@ -19,25 +20,25 @@ const TripDetails = () => {
   }, [id]);
 
   return (
-    <div>
+    <div className={styles.detailsBody}>
       {trip.days ? (
         <>
-          <div className="detailsHeader">
+          <div className={styles.detailsHeader}>
             <h1>{trip.title}</h1>
             <h2>{trip.location}</h2>
             <h3>{trip.description}</h3>
           </div>
           <div>
-            <img className="biggerPic" src={trip.image[0]} alt="" />
+            <img className={styles.biggerPic} src={trip.image[0]} alt="" />
           </div>
           <div className="containerWrapper">
             {trip.days.map((day) => {
               return (
-                <div className="containerDetails">
-                  <div className="numberBlock" classkey={day._id}>
+                <div className={styles.containerDetails}>
+                  <div className={styles.numberBlock} classkey={day._id}>
                     <p>{day.number}</p>
                   </div>
-                  <div className="infosBlock">
+                  <div className={styles.infosBlock}>
                     {day.activities.map((activity) => {
                       return (
                         <div key={activity._id}>

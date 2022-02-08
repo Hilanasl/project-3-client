@@ -1,0 +1,55 @@
+.detailsBody {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #e1e1e1;
+  color: #1e1e1e;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.numberBlock {
+  font-size: 50px;
+  width: 150px;
+  height: inherit;
+  background-color: #485e8b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  font-family: "Domine", serif;
+}
+
+.containerDetails {
+  width: 1024.5px;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+  background-color: #b1dabd;
+  border-radius: 5px;
+}
+
+.infosBlock {
+  padding: 10px 20px 10px 10px;
+  text-align: left;
+  /* font-family: "Montserrat", sans-serif; */
+  font-family: "Open Sans", sans-serif;
+  line-height: 0.5em;
+}
+
+.containerWrapper {
+  margin-bottom: 40px;
+  margin-top: 40px;
+}
+
+.biggerPic {
+  width: 50vw;
+  max-height: 80vh;
+}
+
+.detailsHeader {
+  padding: 20px 0px;
+  font-family: "Domine", serif;
+}
