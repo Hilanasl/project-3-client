@@ -19,7 +19,8 @@
   justify-content: center;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
-  font-family: "Domine", serif;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 800;
 }
 
 .containerDetails {

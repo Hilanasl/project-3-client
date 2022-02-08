@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import UserContext from "./UserContext";
 import apiHandler from "../api/apiHandler";
+import { useNavigate } from "react-router-dom";
 
 const UserProvider = ({ children }) => {
+  const navigate = useNavigate();
   const [auth, setAuth] = useState({
     currentUser: null,
     isLoading: true,
@@ -32,6 +34,7 @@ const UserProvider = ({ children }) => {
   const removeUser = () => {
     removeToken();
     authenticateUser();
+    navigate("/");
   };
 
   const removeToken = () => {
@@ -39,6 +42,7 @@ const UserProvider = ({ children }) => {
   };
   const storeToken = (token) => {
     localStorage.setItem("authToken", token);
+    authenticateUser();
   };
 
   const authValues = {

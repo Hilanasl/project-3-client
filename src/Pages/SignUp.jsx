@@ -1,5 +1,6 @@
 import React from "react";
 import FormSignUp from "../Components/Forms/FormSignUp";
+import apiHandler from "../api/apiHandler.js";
 
 const SignUp = () => {
   return (
