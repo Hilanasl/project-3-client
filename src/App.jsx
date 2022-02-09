@@ -18,7 +18,7 @@ function App() {
 
   useEffect(() => {
     apiHandler
-      .get("http://localhost:8000/trips")
+      .get("/trips")
       .then(({ data }) => {
         setTrips(data);
       })

@@ -5,10 +5,18 @@ const service = axios.create({
   withCredentials: true,
 });
 
+service.interceptors.request.use((config) => {
+  const token = localStorage.getItem("authToken");
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
+
 //! Error handling to use in the catch
 function errorHandler(error) {
   if (error.response.data) {
-    console.log(error.response && error.response.data);
+    // console.log(error.response && error.response.data);
     throw error;
   }
   throw error;

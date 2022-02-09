@@ -4,6 +4,7 @@ import apiHandler from "./../api/apiHandler";
 import Carousel from "../Components/Carousel";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
+import { faSmileWink } from "@fortawesome/free-solid-svg-icons";
 import styles from "./TripDetails.module.css";
 
 const TripDetails = () => {
@@ -31,7 +32,7 @@ const TripDetails = () => {
           <div>
             <img className={styles.biggerPic} src={trip.image[0]} alt="" />
           </div>
-          <div className="containerWrapper">
+          <div className={styles.containerWrapper}>
             {trip.days.map((day) => {
               return (
                 <div className={styles.containerDetails}>
@@ -46,11 +47,15 @@ const TripDetails = () => {
                             <b>{activity.title}</b>
                           </p>
                           <p>
-                            <b>Address: </b>
+                            <b>
+                              <FontAwesomeIcon icon={faMapMarkerAlt} />:{" "}
+                            </b>
                             {activity.address}
                           </p>
                           <p>
-                            <b>Little tip: </b>
+                            <b>
+                              <FontAwesomeIcon icon={faSmileWink} />:{" "}
+                            </b>
                             {activity.description}
                           </p>
                           <br />

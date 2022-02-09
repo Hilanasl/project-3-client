@@ -1,7 +1,6 @@
 import useForm from "../../hooks/useForm";
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import axios from "axios";
 import apiHandler from "../../api/apiHandler";
 
 const FormSignUp = () => {
@@ -18,7 +17,8 @@ const FormSignUp = () => {
     e.preventDefault();
     apiHandler
       .signup(values)
-      .then(() => {
+      .then((infos) => {
+        console.log("this is signup front:", infos);
         navigate("/signin");
       })
       .catch((error) => {

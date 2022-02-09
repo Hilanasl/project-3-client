@@ -4,44 +4,6 @@ import apiHandler from "../api/apiHandler";
 import FormDay from "../Components/Forms/FormDay";
 import FormActivity from "../Components/Forms/FormActivity";
 
-// import { useNavigate } from "react-router-dom";
-
-// trip
-// _id
-// day
-// _id
-// activity
-// _id
-
-// state 1 => trip
-// state 2 => days
-
-// when push > merge the 2 states
-
-/*
-    const currentTrip = {
-      name: "foo trip",
-      days: [
-        [{...formInputsInfos }, {...activity number2}], // 0
-        [{...formInputsInfos }], // 1
-        [{...formInputsInfos },{...formInputsInfos },{...formInputsInfos }], // 2
-      ],
-      daysAlt: {
-        0: {...formInputsInfos },
-        1: {...formInputsInfos },
-        2: {...formInputsInfos },
-      }
-    } 
-    state in trip form should be just one big object
-    state like seed, big object every info
-    send the all object in back end
-    update with info 
-    Define in trip form f° that will handle change of formDay and fromActivity
-    pass the f° as props
-    change the state for days, bc shouldn't give an array of components, but objects.
-    to know wich activity in which day, have an argument in the change handler in activity that give the day (will be CRUCIAL)
-    */
-
 const TripForm = () => {
   const [title, setTitle] = useState("");
   const [categories, setCategories] = useState([]);
@@ -51,13 +13,6 @@ const TripForm = () => {
   const [days, setDays] = useState([
     [{ title: "", address: "", description: "" }],
   ]);
-
-  // const [activities, setActivities] = useState([
-  //   { title: "", address: "", description: "" },
-  // ]);
-  //const [activityTitles, setActivityTitles] = useState([]);
-  //const [address, setAddress] = useState("");
-  //const [activityDescription, setActivityDescription] = useState("");
 
   const categoriesList = [
     "budget",
@@ -186,3 +141,47 @@ const TripForm = () => {
 };
 
 export default TripForm;
+
+// import { useNavigate } from "react-router-dom";
+
+// trip
+// _id
+// day
+// _id
+// activity
+// _id
+
+// state 1 => trip
+// state 2 => days
+
+// when push > merge the 2 states
+
+/*
+    const currentTrip = {
+      name: "foo trip",
+      days: [
+        [{...formInputsInfos }, {...activity number2}], // 0
+        [{...formInputsInfos }], // 1
+        [{...formInputsInfos },{...formInputsInfos },{...formInputsInfos }], // 2
+      ],
+      daysAlt: {
+        0: {...formInputsInfos },
+        1: {...formInputsInfos },
+        2: {...formInputsInfos },
+      }
+    } 
+    state in trip form should be just one big object
+    state like seed, big object every info
+    send the all object in back end
+    update with info 
+    Define in trip form f° that will handle change of formDay and fromActivity
+    pass the f° as props
+    change the state for days, bc shouldn't give an array of components, but objects.
+    to know wich activity in which day, have an argument in the change handler in activity that give the day (will be CRUCIAL)
+    */
+// const [activities, setActivities] = useState([
+//   { title: "", address: "", description: "" },
+// ]);
+//const [activityTitles, setActivityTitles] = useState([]);
+//const [address, setAddress] = useState("");
+//const [activityDescription, setActivityDescription] = useState("");

@@ -106,12 +106,12 @@ const Trips = ({ trips }) => {
         />
 
         <button className="toggleBtn" onClick={toggleBtn}>
-          <i class="fas fa-filter fa-2x"></i>
+          <i className="fas fa-filter fa-2x"></i>
         </button>
       </div>
 
       {showFilters && (
-        <div class="filters">
+        <div className="filters">
           <FilterCats
             filteredCats={filteredCats}
             callbackFilter={callbackFilter}
