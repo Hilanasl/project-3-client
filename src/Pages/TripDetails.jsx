@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import useAuth from "../auth/useAuth";
 import apiHandler from "./../api/apiHandler";
 import Carousel from "../Components/Carousel";
+import MapContainer from "../Components/MapContainer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { faSmileWink } from "@fortawesome/free-solid-svg-icons";

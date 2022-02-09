@@ -1,44 +1,56 @@
-import React from 'react';
+import React from "react";
+import SearchLocationInput from "../SearchLocationInput";
 
-const FormActivity = (props) => {
-  const {activityTitle, setActivityTitle, address, setAddress, activityDescription, setActivityDescription } = props;
-
-  // return <div>todo !</div>
+const FormActivity = ({
+  // callback,
+  activity,
+  setDays,
+  activityNumber,
+  dayNumber,
+}) => {
+  const activityChange = (e) => {
+    setDays((prevState) => {
+      const newState = [...prevState];
+      //    Global state [Day X]  [Activity X]  {title....}
+      newState[dayNumber][activityNumber] = {
+        ...newState[dayNumber][activityNumber],
+        [e.target.name]: e.target.value,
+      };
+      return newState;
+    });
+  };
   return (
     <>
-    <div>
-    <label htmlFor="activityTitle">Title</label>
+      <div>
+        <label htmlFor={"activityTitle-" + activityNumber}>Title</label>
         <input
-            type="text"
-            id="activityTitle"
-            name="activityTitle"
-            value={activityTitle}
-            onChange={(e) => setActivityTitle(e.target.value)}
+          type="text"
+          name="title" // should I let it ? bc that's not what I was submitting to back. Same as TripForm
+          id={`activityTitle-${activityNumber}`}
+          value={activity.title}
+          onChange={activityChange}
         />
-  </div>
-  <div>
-    <label htmlFor="address">Address</label>
+      </div>
+      <div>
+        <SearchLocationInput
+          address={activity.address}
+          activityNumber={activityNumber}
+          activityChange={activityChange}
+        />
+      </div>
+      <div>
+        <label htmlFor={"activityDescription-" + activityNumber}>
+          Description
+        </label>
         <input
-            type="text"
-            id="address"
-            name="address"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
+          type="text"
+          name="description"
+          value={activity.description}
+          onChange={activityChange}
         />
-  </div>
-  <div>
-    <label htmlFor="activityDescription">Description</label>
-        <input
-            type="text"
-            id="activityDescription"
-            name="activityDescription"
-            value={activityDescription}
-            onChange={(e) => setActivityDescription(e.target.value)}
-        />
-  </div>
-
-  </>
-  )
+      </div>
+    </>
+  );
 };
 
 export default FormActivity;

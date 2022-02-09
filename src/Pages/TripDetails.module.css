@@ -13,7 +13,8 @@
   font-size: 50px;
   width: 150px;
   height: inherit;
-  background-color: #485e8b;
+  background-color: rgb(33, 41, 54);
+  color: #b1dabd;
   display: flex;
   align-items: center;
   justify-content: center;
