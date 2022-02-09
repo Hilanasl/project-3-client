@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import apiHandler from "./../api/apiHandler";
 import Carousel from "../Components/Carousel";
+import MapContainer from "../Components/MapContainer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { faSmileWink } from "@fortawesome/free-solid-svg-icons";
@@ -72,7 +73,7 @@ const TripDetails = () => {
       ) : (
         <p>Sorry, no trip yet!</p>
       )}
-
+      <MapContainer />
       <Link to="/trips">
         <button>Back to Trips</button>
       </Link>

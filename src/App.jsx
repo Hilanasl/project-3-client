@@ -12,6 +12,7 @@ import TripForm from "./Pages/TripForm";
 // import PrivateRoute from "./Components/PrivateRoute";
 import apiHandler from "./api/apiHandler";
 import Carousel from "./Components/Carousel";
+import SearchLocationInput from "./Components/SearchLocationInput";
 
 function App() {
   const [trips, setTrips] = useState([]);
@@ -37,6 +38,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/profile/create" element={<TripForm />} />
         <Route path="/profile/:id/update" element={<TripForm />} />
+        <Route path="/map" element={<SearchLocationInput />} />
       </Routes>
     </div>
   );

@@ -1,0 +1,61 @@
+.profileWrapper {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #e1e1e1;
+  color: #1e1e1e;
+}
+
+.profileSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.addTripContainer {
+  width: 1024px;
+  height: 200px;
+  background-image: url("https://ychef.files.bbci.co.uk/976x549/p08sd02y.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 25px;
+}
+
+.addTitle {
+  font-family: "Domine", serif;
+  font-size: 1.8em;
+  padding: 10px;
+  width: 500px;
+  background-color: rgb(206, 226, 206, 0.8);
+  border-radius: 10px;
+}
+
+.addSubtitle {
+  background-color: rgba(206, 226, 206, 0.8);
+  font-size: 1.2em;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width: 200px;
+  border-radius: 5px;
+  font-weight: 700;
+  margin-top: 10px;
+}
+
+.favoritesProfile {
+  width: 1024px;
+  border: 1px black solid;
+}
+
+.plusIcon {
+  font-size: 3em;
+  color: rgb(33, 41, 54);
+  background-color: rgb(206, 226, 206, 0.8);
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 25px;
+}
