@@ -1,0 +1,75 @@
+.signinbody {
+    background: url('./../public/images/poolbackground.jpg') no-repeat center center fixed;
+    background-size: cover;
+    max-width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.signupbody {
+    background: url('./../public/images/doorbackground.jpg') no-repeat center center fixed;
+    background-size: cover;
+    max-width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.authform {
+    margin-top: 10vh;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30vw;
+    height: 52vh;
+    background-color: rgba(216, 214, 196, 0.9);
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+.authform input, .authform label {
+    margin: 5px;
+    width: 18vw
+}
+
+.authform input {
+    background: rgb(187, 185, 185, 0.7);
+    font-size: 18px;
+    border: 1px solid gray;
+}
+
+.authform button {
+    background: none;
+    width: 12vw;
+    border: 1px solid gray;
+    font-size: 18px;
+    margin: 10px
+}
+
+.authform button:hover {
+    background-color: rgba(33, 41, 54, 0.6);
+    width: 12vw;
+    border: 1px solid gray;
+    font-size: 18px;
+    margin: 10px
+}
+
+.signinbody form {
+    height: 35vh;
+    width: 25vw
+}
+
+.signupbody form {
+    background-color: rgba(216, 214, 196, 0.95);
+}
+
+.authform h2 {
+    color: rgba(33, 41, 54);
+    font-weight: 500;
+    font-family: "Domine", serif;
+
+}

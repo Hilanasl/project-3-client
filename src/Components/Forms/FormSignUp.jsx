@@ -28,8 +28,8 @@ const FormSignUp = () => {
   return (
     <>
       {error && <h3 className="error">{error.message}</h3>}
-      <form onSubmit={handleSubmit}>
-        <h2>Signup</h2>
+      <form className='authform' onSubmit={handleSubmit}>
+        <h2>Sign up</h2>
         <label htmlFor="name">Name</label>
         <input
           onChange={handleChange}
@@ -62,7 +62,7 @@ const FormSignUp = () => {
           id="password"
           name="password"
         />
-        <button>Submit</button>
+        <button>Create account</button>
       </form>
     </>
   );

@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import useAuth from "../auth/useAuth";
 //import apiHandler from '../api/apiHandler.js';
 import Search from "./../Components/Search";
 import FilterCats from "../Components/FilterCats";
 import FilterDays from "../Components/FilterDays";
 import './../AllTrips.css'
+
 
 const Trips = ({ trips }) => {
   const [searchedString, setSearchedString] = useState("");

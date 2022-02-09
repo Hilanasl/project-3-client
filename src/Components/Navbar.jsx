@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import useAuth from "../auth/useAuth";
 
+
 const Navbar = () => {
   const { isLoggedIn, removeUser } = useAuth();
   return (

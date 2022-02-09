@@ -31,8 +31,8 @@ const FormSignIn = () => {
   return (
     <>
       {error && <h3 className="error">{error.message}</h3>}
-      <form onSubmit={handleSubmit}>
-        <h2>Sign In</h2>
+      <form className='authform' onSubmit={handleSubmit}>
+        <h2>Sign in</h2>
         <label htmlFor="email">Email</label>
         <input
           type="email"
@@ -49,7 +49,7 @@ const FormSignIn = () => {
           onChange={handleChange}
           value={values.password}
         />
-        <button>Submit</button>
+        <button>Sign in</button>
       </form>
     </>
   );
