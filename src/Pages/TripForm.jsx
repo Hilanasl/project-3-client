@@ -3,7 +3,6 @@ import React, { useState, useRef, useEffect } from "react";
 import apiHandler from "../api/apiHandler";
 import FormDay from "../Components/Forms/FormDay";
 import FormActivity from "../Components/Forms/FormActivity";
-// import { useNavigate } from "react-router-dom";
 
 const TripForm = () => {
   const [title, setTitle] = useState("");
@@ -11,11 +10,10 @@ const TripForm = () => {
   const [location, setLocation] = useState("");
   const [description, setDescription] = useState("");
   const imageRef = useRef();
+  const [days, setDays] = useState([
+    [{ title: "", address: "", description: "" }],
+  ]);
 
-  // const [activities, setActivities] = useState([{}])
-  const [activityTitle, setActivityTitle] = useState("");
-  const [address, setAddress] = useState("");
-  const [activityDescription, setActivityDescription] = useState("");
   const categoriesList = [
     "budget",
     "comfortable",
@@ -29,27 +27,14 @@ const TripForm = () => {
     "gastronomic",
     "nature",
   ];
-  console.log("form trip", setAddress);
-  const [day, setDay] = useState([
-    <FormDay
-      key="0"
-      day="0"
-      activityTitle={activityTitle}
-      setActivityTitle={setActivityTitle}
-      address={address}
-      setAddress={setAddress}
-      activityDescription={activityDescription}
-      setActivityDescription={setActivityDescription}
-    />,
-  ]);
-  // const [author, setAuthor] = useState("");
-  // const navigate = useNavigate()
 
   // ADD A NEW DAY
   const addDay = (event) => {
     event.preventDefault();
-    setDay([...day, <FormDay key={day.length} day={day.length} />]);
+    setDays((days) => [...days, [{ title: "", address: "", description: "" }]]);
   };
+
+  // const callback = (key, value) => console.log("foo foo foo !!!", key, value);
 
   // HANDLE CHECKED CATEGORIES
   const handleCategory = (e) => {
@@ -64,27 +49,25 @@ const TripForm = () => {
   };
 
   // SUBMIT DATA
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const fd = new FormData();
     fd.append("title", title);
     fd.append("categories", categories);
     fd.append("location", location);
     fd.append("description", description);
-    fd.append("image", image.current.files);
-    fd.append("day", day); //on n'en a peut etre pas besoin
-    // about activities
-    //ici on veut envoyer activities qui est un tableau d'objet; chaque object contenant le titre, la description de lactivité en question
-    //et peut-être le jour auquel cette activité correspond
-    fd.append("activityTitle", activityTitle);
-    fd.append("address", address);
-    fd.append("activityDescription", activityDescription);
+    fd.append("image", imageRef.current.files);
+    fd.append("days", JSON.stringify(days));
 
+    console.log("FORM DATA ------>", fd);
+    console.log("---> What are you 'days' ?", days);
     apiHandler
       .post("/trips", fd)
-      .then((res) => console.log(res))
+      .then((res) => console.log("RES apiHandler", res))
       .catch((e) => console.log(e));
   };
+
+  console.log("------- CURRENT STATE OF TRIP IS -----");
 
   // FORM
   return (
@@ -138,10 +121,18 @@ const TripForm = () => {
         <input ref={imageRef} name="image" type="file" />
 
         <button onClick={addDay}>Add a day</button>
-        <p>Number of days {day.length} </p>
-        {day.map((el) => {
-          return el;
-        })}
+
+        <p>Number of days {days?.length} </p>
+
+        {days.map((el, i) => (
+          <FormDay
+            // callback={callback}
+            activities={days[i]}
+            setDays={setDays}
+            dayNumber={i}
+            key={i}
+          />
+        ))}
 
         <button onClick={handleSubmit}>Good</button>
       </form>
@@ -150,3 +141,47 @@ const TripForm = () => {
 };
 
 export default TripForm;
+
+// import { useNavigate } from "react-router-dom";
+
+// trip
+// _id
+// day
+// _id
+// activity
+// _id
+
+// state 1 => trip
+// state 2 => days
+
+// when push > merge the 2 states
+
+/*
+    const currentTrip = {
+      name: "foo trip",
+      days: [
+        [{...formInputsInfos }, {...activity number2}], // 0
+        [{...formInputsInfos }], // 1
+        [{...formInputsInfos },{...formInputsInfos },{...formInputsInfos }], // 2
+      ],
+      daysAlt: {
+        0: {...formInputsInfos },
+        1: {...formInputsInfos },
+        2: {...formInputsInfos },
+      }
+    } 
+    state in trip form should be just one big object
+    state like seed, big object every info
+    send the all object in back end
+    update with info 
+    Define in trip form f° that will handle change of formDay and fromActivity
+    pass the f° as props
+    change the state for days, bc shouldn't give an array of components, but objects.
+    to know wich activity in which day, have an argument in the change handler in activity that give the day (will be CRUCIAL)
+    */
+// const [activities, setActivities] = useState([
+//   { title: "", address: "", description: "" },
+// ]);
+//const [activityTitles, setActivityTitles] = useState([]);
+//const [address, setAddress] = useState("");
+//const [activityDescription, setActivityDescription] = useState("");

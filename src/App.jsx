@@ -38,7 +38,6 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/profile/create" element={<TripForm />} />
         <Route path="/profile/:id/update" element={<TripForm />} />
-        <Route path="/map" element={<SearchLocationInput />} />
       </Routes>
     </div>
   );

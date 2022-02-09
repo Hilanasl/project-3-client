@@ -38,8 +38,8 @@ async function handlePlaceSelect(updateQuery) {
   console.log(addressObject);
 }
 
-function SearchLocationInput({ address, setAddress, ...props }) {
-  const [query, setQuery] = useState("");
+function SearchLocationInput({ address, activityChange, activityNumber }) {
+  const [query, setQuery] = useState(address);
   const autoCompleteRef = useRef(null);
 
   useEffect(() => {
@@ -49,20 +49,22 @@ function SearchLocationInput({ address, setAddress, ...props }) {
     );
   }, []);
 
-  console.log(setAddress);
   const handleAdressChange = (event) => {
     setQuery(event.target.value);
-    setAddress(event.target.value);
+    activityChange(event);
   };
 
   return (
     <div className="search-location-input">
+      <label htmlFor={"address-" + activityNumber}>Address</label>
       <input
-        {...props}
+        type="text"
+        name="address"
+        id={"address-" + activityNumber}
         ref={autoCompleteRef}
         onChange={handleAdressChange}
-        placeholder="Enter a City"
-        value={query}
+        placeholder=""
+        value={address}
       />
     </div>
   );
