@@ -1,21 +1,20 @@
-import axios from "axios";
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import apiHandler from "../api/apiHandler";
 import FormDay from "../Components/Forms/FormDay";
-import FormActivity from "../Components/Forms/FormActivity";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-const TripForm = () => {
+export default function FormUpdate() {
+  // id before
+  const navigate = useNavigate();
+  const params = useParams(); // to use url id
+
   const [title, setTitle] = useState("");
   const [categories, setCategories] = useState([]);
   const [location, setLocation] = useState("");
   const [description, setDescription] = useState("");
   const imageRef = useRef();
-  const [days, setDays] = useState([
-    [{ title: "", address: "", description: "" }],
-  ]);
-  const navigate = useNavigate();
-
+  const [days, setDays] = useState(null);
+  // [{activites[{title, adress, description}]}]
   const categoriesList = [
     "budget",
     "comfortable",
@@ -30,11 +29,33 @@ const TripForm = () => {
     "nature",
   ];
 
+  useEffect(() => {
+    const x = async () => {
+      const { data } = await apiHandler.get("/trips/" + params.id);
+      console.log(data);
+      setTitle(data.title);
+      setCategories(data.categories);
+      setLocation(data.location);
+      setDescription(data.description);
+      //   const days = data.days.map((day) => (day = day.activities));
+      setDays(data.days);
+    };
+    x();
+  }, [params.id]);
+
   // ADD A NEW DAY
   const addDay = (event) => {
     event.preventDefault();
-    setDays((days) => [...days, [{ title: "", address: "", description: "" }]]);
+    setDays((days) => [
+      ...days,
+      {
+        activities: [{ title: "", address: "", description: "" }],
+        number: days.length + 1,
+      },
+    ]);
   };
+
+  // EMPTY (remove) A DAY Or AN ACTIVITY ..
 
   // HANDLE CHECKED CATEGORIES
   const handleCategory = (e) => {
@@ -49,7 +70,8 @@ const TripForm = () => {
   };
 
   // SUBMIT DATA
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
+    console.log("i am in handle submit");
     e.preventDefault();
     const fd = new FormData();
     fd.append("title", title);
@@ -59,24 +81,19 @@ const TripForm = () => {
     fd.append("image", imageRef.current.files[0]);
     fd.append("days", JSON.stringify(days));
 
-    console.log("FORM DATA ------>", fd);
-    console.log("---> What are you 'days' ?", days);
-    apiHandler
-      .post("/trips", fd)
-      .then((res) => {
-        console.log("RES apiHandler", res);
-        navigate("/profile");
-      })
-      .catch((e) => console.log(e));
+    try {
+      const { data } = await apiHandler.patch("/trips/" + params.id, fd);
+      console.log("data updated :", data);
+      navigate("/profile");
+    } catch (err) {
+      console.log(err);
+    }
   };
 
-  console.log("------- CURRENT STATE OF TRIP IS -----");
-
-  // FORM
-  return (
+  return days ? (
     <>
       <div>
-        <h2>ADD A NEW TRIP</h2>
+        <h2>UPDATE YOUR TRIP</h2>
         <form className="tripform" onSubmit={handleSubmit}>
           <div>
             <label htmlFor="title"> Title </label>
@@ -132,11 +149,11 @@ const TripForm = () => {
 
           {days.map((el, i) => (
             <FormDay
-              // callback={callback}
-              activities={days[i]}
+              activities={days[i].activities}
               setDays={setDays}
               dayNumber={i}
               key={i}
+              update={true}
             />
           ))}
 
@@ -144,51 +161,7 @@ const TripForm = () => {
         </form>
       </div>
     </>
+  ) : (
+    <p>Loading</p>
   );
-};
-
-export default TripForm;
-
-// import { useNavigate } from "react-router-dom";
-
-// trip
-// _id
-// day
-// _id
-// activity
-// _id
-
-// state 1 => trip
-// state 2 => days
-
-// when push > merge the 2 states
-
-/*
-    const currentTrip = {
-      name: "foo trip",
-      days: [
-        [{...formInputsInfos }, {...activity number2}], // 0
-        [{...formInputsInfos }], // 1
-        [{...formInputsInfos },{...formInputsInfos },{...formInputsInfos }], // 2
-      ],
-      daysAlt: {
-        0: {...formInputsInfos },
-        1: {...formInputsInfos },
-        2: {...formInputsInfos },
-      }
-    } 
-    state in trip form should be just one big object
-    state like seed, big object every info
-    send the all object in back end
-    update with info 
-    Define in trip form f° that will handle change of formDay and fromActivity
-    pass the f° as props
-    change the state for days, bc shouldn't give an array of components, but objects.
-    to know wich activity in which day, have an argument in the change handler in activity that give the day (will be CRUCIAL)
-    */
-// const [activities, setActivities] = useState([
-//   { title: "", address: "", description: "" },
-// ]);
-//const [activityTitles, setActivityTitles] = useState([]);
-//const [address, setAddress] = useState("");
-//const [activityDescription, setActivityDescription] = useState("");
+}
