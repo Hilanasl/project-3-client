@@ -9,13 +9,17 @@ const FormActivity = ({
   dayNumber,
 }) => {
   const activityChange = (e) => {
+    console.log(e.target, "<<< ici");
     setDays((prevState) => {
       const newState = [...prevState];
       //    Global state [Day X]  [Activity X]  {title....}
       newState[dayNumber][activityNumber] = {
         ...newState[dayNumber][activityNumber],
-        [e.target.name]: e.target.value,
+        [e.target.name]: e.target.coords
+          ? { text: e.target.value, coords: e.target.coords }
+          : e.target.value,
       };
+
       return newState;
     });
   };

@@ -25,7 +25,7 @@ function handleScriptLoad(updateQuery, autoCompleteRef) {
   autoComplete = new window.google.maps.places.Autocomplete(
     autoCompleteRef.current
   );
-  autoComplete.setFields(["address_components", "formatted_address"]);
+  //autoComplete.setFields(["address_components", "formatted_address"]);
   autoComplete.addListener("place_changed", () =>
     handlePlaceSelect(updateQuery)
   );
@@ -33,9 +33,15 @@ function handleScriptLoad(updateQuery, autoCompleteRef) {
 
 async function handlePlaceSelect(updateQuery) {
   const addressObject = autoComplete.getPlace();
-  const query = addressObject.formatted_address;
-  updateQuery(query);
-  console.log(addressObject);
+  const { lat, lng } = addressObject.geometry.location;
+  //updateQuery(query);
+  updateQuery({
+    name: "address",
+    value: addressObject.formatted_address,
+    address: addressObject.formatted_address,
+    coords: [lat(), lng()],
+  });
+  console.log("addressObject", addressObject);
 }
 
 function SearchLocationInput({ address, activityChange, activityNumber }) {
@@ -49,10 +55,16 @@ function SearchLocationInput({ address, activityChange, activityNumber }) {
     );
   }, []);
 
-  const handleAdressChange = (event) => {
-    setQuery(event.target.value);
-    activityChange(event);
+  useEffect(() => {
+    console.log("~query changed");
+    activityChange({ target: query });
+  }, [query]);
+
+  const handleAddressChange = (event) => {
+    //setQuery((prev) => ({ ...prev, value: event.target.value }));
   };
+
+  console.log("> QUERY >>>", query);
 
   return (
     <div className="search-location-input">
@@ -62,9 +74,8 @@ function SearchLocationInput({ address, activityChange, activityNumber }) {
         name="address"
         id={"address-" + activityNumber}
         ref={autoCompleteRef}
-        onChange={handleAdressChange}
+        onChange={handleAddressChange}
         placeholder=""
-        value={address}
       />
     </div>
   );

@@ -51,14 +51,17 @@ button {
   background-color: rgb(216, 214, 196);
 }
 
-.navbar a {
+.navbar p,
+a {
   text-decoration: none;
   font-size: 20px;
   color: rgb(0, 15, 5);
+  cursor: pointer;
 }
 
 .homebody {
-  background: url('./../public/images/desertbackground.jpg') no-repeat center center fixed;
+  background: url("./../public/images/desertbackground.jpg") no-repeat center
+    center fixed;
   background-size: cover;
   max-width: 100vw;
   height: 100vh;
@@ -75,15 +78,14 @@ button {
   align-content: center;
   height: 50vh;
   color: rgb(0, 15, 5);
-
 }
 
-.hometext h1, .hometext h2 {
+.hometext h1,
+.hometext h2 {
   margin-top: 40px;
   font-weight: 300;
-  font-size: 2.5em
+  font-size: 2.5em;
 }
-
 
 .homebody a {
   text-decoration: none;

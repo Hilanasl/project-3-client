@@ -9,11 +9,10 @@ import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { faSmileWink } from "@fortawesome/free-solid-svg-icons";
 import styles from "./TripDetails.module.css";
 
-const TripDetails = ({favesClick, faves}) => {
+const TripDetails = ({ favesClick, faves }) => {
   const [trip, setTrip] = useState({});
   const { id } = useParams();
-  const { currentUser, isLoggedIn, storeToken } = useAuth()
-
+  const { currentUser, isLoggedIn, storeToken } = useAuth();
 
   useEffect(() => {
     apiHandler
@@ -23,12 +22,6 @@ const TripDetails = ({favesClick, faves}) => {
       })
       .catch((e) => console.log(e));
   }, [id]);
-
-
-
- 
-
-
 
   return (
     <div className={styles.detailsBody}>
@@ -45,18 +38,23 @@ const TripDetails = ({favesClick, faves}) => {
             <img className={styles.biggerPic} src={trip.image[0]} alt="" />
           </div>
 
-          {isLoggedIn && ( 
-          <div className='tripsbtn'>
-          {!faves.includes(id) && (
-          <button onClick={() => favesClick(id)}>Favourite <i className="fa-solid fa-sun"></i></button>
-          )}
-          {faves.includes(id) && (
-          <button onClick={() => favesClick(id)}>Unfavourite <i className="fa-solid fa-cloud-showers-heavy"></i></button>
-          )}
-          </div>
+          {isLoggedIn && (
+            <div className="tripsbtn">
+              {!faves.includes(id) && (
+                <button className={styles.btn} onClick={() => favesClick(id)}>
+                  Favourite <i className="fa-solid fa-sun"></i>
+                </button>
+              )}
+              {faves.includes(id) && (
+                <button className={styles.btn} onClick={() => favesClick(id)}>
+                  Unfavourite{" "}
+                  <i className="fa-solid fa-cloud-showers-heavy"></i>
+                </button>
+              )}
+            </div>
           )}
           <Link to="/trips">
-          <button>Back to trips</button>
+            <button>Back to trips</button>
           </Link>
 
           <div className={styles.containerWrapper}>
@@ -70,8 +68,8 @@ const TripDetails = ({favesClick, faves}) => {
                     {day.activities.map((activity) => {
                       return (
                         <div key={activity._id}>
-                          <p>
-                            <b>{activity.title}</b>
+                          <p className={styles.activitiesTitle}>
+                            {activity.title}
                           </p>
                           <p>
                             <b>
@@ -95,6 +93,7 @@ const TripDetails = ({favesClick, faves}) => {
             })}
           </div>
           <Carousel trip={trip} />
+          <MapContainer />
         </>
       ) : (
         <p>Sorry, no trip yet!</p>
