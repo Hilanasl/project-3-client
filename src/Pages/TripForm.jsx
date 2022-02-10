@@ -3,6 +3,7 @@ import React, { useState, useRef, useEffect } from "react";
 import apiHandler from "../api/apiHandler";
 import FormDay from "../Components/Forms/FormDay";
 import FormActivity from "../Components/Forms/FormActivity";
+import "./../Crud.css";
 
 const TripForm = () => {
   const [title, setTitle] = useState("");
@@ -71,14 +72,16 @@ const TripForm = () => {
 
   // FORM
   return (
-    <div>
-      <h2>ADD A NEW TRIP</h2>
-      <form className="tripform" onSubmit={handleSubmit}>
+    <div className="crudbody">
+      <h2>Create a travel itinerary</h2>
+      <div className="maintripform">
+      <form className="crudform" onSubmit={handleSubmit}>
         <div>
           <label htmlFor="title"> Title </label>
           <input
             type="text"
             id="title"
+            className="crud-long-input"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
@@ -89,12 +92,13 @@ const TripForm = () => {
           <input
             type="text"
             id="location"
+            className="crud-long-input"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
           />
         </div>
 
-        <div>
+        <div className='crud-cats'>
           {categoriesList.map((categorie, i) => (
             <React.Fragment key={i}>
               <input
@@ -113,16 +117,17 @@ const TripForm = () => {
           <input
             type="text"
             id="description"
+            className="crud-long-input"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
         </div>
 
-        <input ref={imageRef} name="image" type="file" />
+        <p>Upload a picture from your trip:</p><input ref={imageRef} name="image" type="file" />
 
-        <button onClick={addDay}>Add a day</button>
+        <h3 className='daycount'><i className="far fa-calendar-alt"></i> DAYS: {days?.length}</h3>
+        <button onClick={addDay}>ADD DAY <i className="fa-solid fa-plus"></i></button>
 
-        <p>Number of days {days?.length} </p>
 
         {days.map((el, i) => (
           <FormDay
@@ -134,8 +139,11 @@ const TripForm = () => {
           />
         ))}
 
+        <div className='crud-submit'>
         <button onClick={handleSubmit}>Good</button>
+        </div>
       </form>
+    </div>
     </div>
   );
 };

@@ -23,12 +23,13 @@ const FormDay = ({ dayNumber, activities, setDays }) => {
 
   if (!activities) return null;
   return (
-    <div>
+    <div className='crudform'>
+
+      <div className='activitycount'>
       <h2>Day n° {dayNumber + 1}</h2>
+      <h3><i class="fa-solid fa-person-snowboarding"></i> ACTIVITIES: {activities.length} </h3>
+      </div>
 
-      <button onClick={addActivity}>Add an activity</button>
-
-      <p>Number of activities {activities.length} </p>
       {activities.map((activity, i) => (
         <FormActivity
           // callback={callback}
@@ -39,6 +40,8 @@ const FormDay = ({ dayNumber, activities, setDays }) => {
           key={i}
         />
       ))}
+      <button onClick={addActivity} className='activitybutton'>ADD ACTIVITY <i class="fa-solid fa-plus"></i></button>
+
     </div>
   );
 };

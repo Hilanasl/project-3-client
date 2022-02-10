@@ -20,7 +20,6 @@ function App() {
   const [faves, setFaves] = useState([]);
   const { currentUser, isLoggedIn, storeToken } = useAuth()
 
-
   useEffect(() => {
     apiHandler
       .get("/trips")
@@ -29,6 +28,7 @@ function App() {
       })
       .catch((err) => console.error(err));
   }, []);
+
 
   useEffect(() => {
     if(currentUser) {
@@ -46,7 +46,6 @@ function App() {
 }
 
 
-
   return (
     <div className="App">
       <Navbar />
@@ -56,7 +55,7 @@ function App() {
         <Route path="/trips/:id" element={<TripDetails trips={trips} favesClick={favesClick} faves={faves}/>} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile" element={<Profile faves={faves}/>} />
         <Route path="/profile/create" element={<TripForm />} />
         <Route path="/profile/:id/update" element={<TripForm />} />
       </Routes>

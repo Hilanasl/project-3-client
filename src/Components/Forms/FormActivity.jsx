@@ -20,13 +20,14 @@ const FormActivity = ({
     });
   };
   return (
-    <>
+    <div className='crudform'>
       <div>
         <label htmlFor={"activityTitle-" + activityNumber}>Title</label>
         <input
           type="text"
           name="title" // should I let it ? bc that's not what I was submitting to back. Same as TripForm
           id={`activityTitle-${activityNumber}`}
+          className="crud-long-input"
           value={activity.title}
           onChange={activityChange}
         />
@@ -45,11 +46,12 @@ const FormActivity = ({
         <input
           type="text"
           name="description"
+          className="crud-long-input"
           value={activity.description}
           onChange={activityChange}
         />
       </div>
-    </>
+    </div>
   );
 };
 

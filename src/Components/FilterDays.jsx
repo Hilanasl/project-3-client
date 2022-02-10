@@ -1,12 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
+import './../AllTrips.css'
 
-const FilterDays = () => {
+
+const FilterDays = ({duration, filterDays}) => {
+
   return (
 
   <div>
-      <p>Filter by duration</p>
+    <p className='daytitle'>Duration (max days)</p>
 
-    <input id="ticketNum" type="number" name="ticketNum" value="0"></input>
+    <>
+    <input onChange={(e) => filterDays(e.target.value)}
+    className='duration' 
+    type="number" 
+    name="duration" 
+    min="0"
+    value={duration}
+    />
+    </>
+
   </div>
   )
 };
