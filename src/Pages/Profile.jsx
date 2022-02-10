@@ -1,35 +1,80 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import styles from "./Profile.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import apiHandler from "./../api/apiHandler";
+
 
 const Profile = () => {
+
+  const [usersFaves, setUsersFaves] = useState([])
+
+  useEffect(() => {
+    apiHandler
+      .get("/users/profile")
+      .then(({ data }) => {
+        setUsersFaves(data.favourites);
+      })
+      .catch((err) => console.error(err));
+  }, []);
+
+
   return (
     <div className={styles.profileWrapper}>
+      <style>
+      @import
+      url('https://fonts.googleapis.com/css2?family=Domine:wght@500&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&display=swap');
+      </style>
       <div>
-        <h1>Welcome to your Travel Board!</h1>
+      <h1>Welcome to your Travel Board!</h1>
       </div>
+
       <div className={styles.profileSection}>
+
         <section className={styles.addTripContainer}>
-          <h2 className={styles.addTitle}>
-            How about let others discover your trips?
-          </h2>
-          <div>
-            <p className={styles.addSubtitle}>Create a new Trip:</p>
-            <Link to={"/profile/create"}>
-              {" "}
-              <FontAwesomeIcon icon={faPlus} className={styles.plusIcon} />
-            </Link>
+
+        <div className={styles.createtrip}>
+        <Link to={"/profile/create"}>
+          <h2>
+            Let others discover your trips!</h2>
+            <><FontAwesomeIcon icon={faPlus} className={styles.plusIcon} /></>
+          <h2>Create a new trip</h2>
+          </Link>
           </div>
-        </section>
+
+          </section>
+
+
+
+
+        <h2>Your favourite itineraries</h2>
+
         <section className={styles.favoritesProfile}>
-          <h2>Don't forget your favorite itineraries!</h2>
-          <div>Check favorites here</div>
+          <div className={styles.favtrips}>
+
+          {usersFaves.map((trip) => {
+            return (
+            <div className={styles.proftrip} key={trip._id}>
+
+            <p>{trip.title}</p>
+            <p>{trip.description}</p>
+            <p><i className="fas fa-map-marker-alt"></i> {trip.location}</p>
+            <img src={trip?.image[0]} alt=""/>
+
+            <Link to={`/trips/${trip._id}`}>
+            <button>See full itinerary</button>
+            </Link>
+            </div>
+            )
+          })}
+        </div>
         </section>
+
+        <h2>Your added trips</h2>
         <section className={styles.favoritesProfile}>
-          <h2>Your added trips</h2>
-          <div>Check favorites here</div>
+        <p>waiting for added trips</p>
         </section>
       </div>
     </div>

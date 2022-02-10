@@ -29,7 +29,9 @@ const TripDetails = ({ favesClick, faves }) => {
         <>
           <div className={styles.detailsHeader}>
             <h1>{trip.title}</h1>
-            <h2>{trip.location}</h2>
+            <h2>
+              <FontAwesomeIcon icon={faMapMarkerAlt} /> {trip.location}
+            </h2>
             <h3>{trip.description}</h3>
             <h3>Contributed by: {trip.author.username}</h3>
           </div>

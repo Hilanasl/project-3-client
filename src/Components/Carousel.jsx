@@ -33,8 +33,15 @@ const Carousel = ({ trip }) => {
       <div className={styles.container}>
         <div className={styles.carousel} ref={carousel}>
           {trip.image?.map((pic, index) => (
+<<<<<<< HEAD
             <div className={styles.image} key={index}>
               <img src={pic} alt="" />
+=======
+            <div className={styles.item} key={index}>
+              <div className={styles.image}>
+                <img src={pic} alt="" />
+              </div>
+>>>>>>> 6e35318c065faeb49c5b7aa0b9aaf2dda4bd1c29
             </div>
           ))}
         </div>

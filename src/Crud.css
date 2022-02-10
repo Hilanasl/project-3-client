@@ -1,0 +1,74 @@
+.crudbody {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+    text-align: left;
+    background: url('./../public/images/seabackground.jpg');
+    background-size: cover;
+}
+
+.maintripform {
+    border: 1px solid rgb(216, 214, 196);
+    background-color: rgb(216, 214, 196, 0.3);
+    border-radius: 5px
+}
+
+.crudform {
+    margin: 20px;
+    padding: 10px
+}
+
+.crudform h2, .crudbody h2, .crudbody h3 {
+    font-weight: 300;
+}
+
+
+.crudform input, .crudform label {
+    margin: 5px;
+    
+}
+
+
+.crud-long-input {
+    width: 30vw
+}
+
+.crud-cats {
+    width: 670px;
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+.daycount {
+    margin-top: 20px
+}
+
+.activitycount {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.activitybutton {
+    float: right
+}
+
+.crudbody button {
+    border: 1px solid #aaa5a5;
+    font-size: 1em;
+    padding: 5px;
+    background-color: rgb(230, 229, 220);
+}
+
+.crudbody button:hover {
+    background-color: rgb(216, 214, 196, 0.3);
+}
+
+.crud-submit {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}

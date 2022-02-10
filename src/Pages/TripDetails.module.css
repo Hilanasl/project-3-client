@@ -29,14 +29,13 @@
   display: flex;
   flex-direction: row;
   margin-bottom: 10px;
-  background-color: #e1c49e;
+  background-color: #93c0a0;
   border-radius: 5px;
 }
 
 .infosBlock {
   padding: 10px 20px 10px 10px;
   text-align: left;
-  /* font-family: "Montserrat", sans-serif; */
   font-family: "Open Sans", sans-serif;
   line-height: 0.5em;
 }
@@ -51,17 +50,16 @@
   max-height: 80vh;
 }
 
-.detailsHeader {
-  padding: 20px 0px;
+.detailsHeader h1 {
   font-family: "Domine", serif;
 }
 
-.activitiesTitle {
-  font-size: 1.2em;
-  font-weight: 600;
+.detailsHeader h2,
+.detailsHeader h3 {
+  font-family: "Open Sans", sans-serif;
 }
 
-.detailsBody button.btn {
+.detailsBody button {
   background-color: #e1e1e1;
   border: 3px solid rgb(216, 214, 196);
   margin: 4px;
