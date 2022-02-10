@@ -1,20 +1,30 @@
-
 .tripsbody {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: whitesmoke;
+    background-color: #e1e1e1;
+    font-family: "Open Sans", sans-serif;
+
+}
+
+.tripsbody .pagetitle {
+  font-family: "Open Sans", sans-serif;
+  font-size: 25px;
+  color: rgb(53, 52, 52);
+  font-weight: lighter;
 }
 
 .tripsbody h1 {
-    font-family: 'Domine', serif;
-    font-size: 48px;
-    color: rgb(53, 52, 52)
+    font-family: "Open Sans", sans-serif;
+    font-size: 40px;
+    color: rgb(53, 52, 52);
+    font-weight: lighter;
 }
 
 
-.searchbar{
-    display: flex
+.searchbar {
+    display: flex;
+    margin: 5px
 }
 
 .instruct {
@@ -32,19 +42,27 @@
   .trip {
     max-width: 20vw;
     min-width: 20vw;
-    border: 1px solid rgb(176, 178, 202);
-    margin: 5px;
-    padding: 5px;
-    background-color: rgba(33, 41, 54, 0.9);
+    margin: 10px;
+    padding: 10px;
+    background-color: rgba(37, 50, 71);
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: space-between;
     color: rgb(234, 237, 241);
   }
 
+  .trip p {
+    font-family: "Open Sans", sans-serif;
+    font-size: 17px;
+    color: rgb(234, 237, 241);
+
+  }
+
   .title {
     font-family: 'Domine', serif;
+    font-size: 20px;
+    color: rgb(234, 237, 241);
+
 }
   
   .trip img {
@@ -53,12 +71,8 @@
   }
   
   .daynumber, .trip a {
-    font-weight: bold;
-    font-size: 20px;
-    color: rgb(234, 237, 241);
     text-decoration: none;
   }
-  
   
   .search {
     width: 40vw;
@@ -66,8 +80,8 @@
     padding: 4px;
     font-style: italic;
     font-size: 16px;
-    background-color: whitesmoke;
-    border: 1px solid #EE7879;
+    background-color: #e1e1e1;
+    border: 2px solid rgb(190, 97, 61);
   }
   
   .catfilters {
@@ -76,19 +90,39 @@
     max-width: 40vw;
     justify-content: center;
     gap: 5px;
-    margin: 5px;
+    margin: 10px;
     color: rgb(48, 47, 47)
-
   }
+
+
   
   .toggleBtn {
-    background-color: whitesmoke;
+    background-color: #e1e1e1;
     font-size: 15px;
     margin: 5px;
     border-style: none;
-    color: #EE7879
+    color: rgb(190, 97, 61)
   }
 
   .filters {
-      display: flex
+      display: flex;
+      justify-content: space-between;
+      gap: 20px
   }
+
+
+.duration {
+  width: 40px;
+  height: 30px;
+  padding: 2px;
+  font-size: 16pt;
+  font-weight: bold;
+  color: rgb(190, 97, 61);
+  font-size: 20px;
+  background-color: #e1e1e1;
+  border: 2px solid rgb(190, 97, 61);
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}

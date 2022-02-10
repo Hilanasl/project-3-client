@@ -37,9 +37,6 @@ const Carousel = ({ trip }) => {
               <div className={styles.image}>
                 <img src={pic} alt="" />
               </div>
-              <div className={styles.info}>
-                <p>description</p>
-              </div>
             </div>
           ))}
         </div>

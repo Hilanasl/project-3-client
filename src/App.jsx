@@ -58,7 +58,7 @@ function App() {
         />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile" element={<Profile faves={faves} />} />
         <Route path="/profile/create" element={<TripForm />} />
         <Route path="/profile/:id/update" element={<FormUpdate />} />
       </Routes>

@@ -1,8 +1,22 @@
+
 .profileWrapper {
   width: 100%;
   min-height: 100vh;
   background-color: #e1e1e1;
   color: #1e1e1e;
+  font-family: "Open Sans", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.profileWrapper h1, .profileWrapper h2 {
+  font-weight: 400;
+}
+
+.profileWrapper h1 {
+  font-size: 30px
 }
 
 .profileSection {
@@ -10,52 +24,90 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
+  font-family: "Open Sans", sans-serif;
 }
 
 .addTripContainer {
-  width: 1024px;
-  height: 200px;
-  background-image: url("https://ychef.files.bbci.co.uk/976x549/p08sd02y.jpg");
+  width: 100vw;
+  height: 60vh;
+  background-image: url('./../../public/images/nyhavnbackground.jpg');
+  opacity: 0.8;
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
   padding: 25px;
+  font-family: "Open Sans", sans-serif;
 }
 
-.addTitle {
-  font-family: "Domine", serif;
-  font-size: 1.8em;
+.createtrip {
+  font-size: 1.1em;
   padding: 10px;
-  width: 500px;
+  width: 450px;
   background-color: rgb(206, 226, 206, 0.8);
-  border-radius: 10px;
+  border-radius: 5px;
+  font-family: "Open Sans", sans-serif;
+  opacity: 1.0;
+  display: flex;
+  flex-direction: column;
+  font-weight: 700;
 }
 
-.addSubtitle {
-  background-color: rgba(206, 226, 206, 0.8);
-  font-size: 1.2em;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  width: 200px;
-  border-radius: 5px;
-  font-weight: 700;
-  margin-top: 10px;
+.createtrip a {
+  text-decoration: none;
+  color: #141414;
+}
+
+.plusIcon {
+  font-size: 2em;
+  color: rgb(33, 41, 54);
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .favoritesProfile {
   width: 1024px;
-  border: 1px black solid;
+  box-sizing: border-box;
+  overflow: scroll;
+  display: flex;
+  flex-direction: row;
 }
 
-.plusIcon {
-  font-size: 3em;
-  color: rgb(33, 41, 54);
-  background-color: rgb(206, 226, 206, 0.8);
-  padding: 10px;
-  border-radius: 10px;
-  margin-bottom: 25px;
+.favtrips {
+  display: flex
+}
+
+.favtrips button {
+  border: 1px solid whitesmoke;
+  color: whitesmoke;
+  padding: 3px;
+  font-size: 15px;
+  background-color: rgba(33, 41, 54, 0.7);
+}
+
+
+.proftrip {
+  max-width: 20vw;
+  min-width: 20vw;
+  height: 70vh;
+  border: 1px solid rgb(176, 178, 202);
+  margin: 5px;
+  padding: 15px;
+  background-color: rgba(33, 41, 54, 0.9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  color: rgb(234, 237, 241);
+  box-sizing: border-box;
+}
+
+
+
+.proftrip img {
+  max-width: 18vw;
+  max-height: 30vh
 }

@@ -25,18 +25,13 @@ const TripDetails = ({favesClick, faves}) => {
   }, [id]);
 
 
-
- 
-
-
-
   return (
     <div className={styles.detailsBody}>
       {trip.days ? (
         <>
           <div className={styles.detailsHeader}>
             <h1>{trip.title}</h1>
-            <h2>{trip.location}</h2>
+            <h2><FontAwesomeIcon icon={faMapMarkerAlt} /> {trip.location}</h2>
             <h3>{trip.description}</h3>
             <h3>Contributed by: {trip.author.username}</h3>
           </div>
@@ -95,6 +90,7 @@ const TripDetails = ({favesClick, faves}) => {
             })}
           </div>
           <Carousel trip={trip} />
+          <MapContainer />
         </>
       ) : (
         <p>Sorry, no trip yet!</p>

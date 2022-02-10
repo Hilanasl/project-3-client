@@ -12,7 +12,8 @@ const Trips = ({ trips }) => {
   const [searchedString, setSearchedString] = useState("");
   const [searchedTrips, SetSearchedTrips] = useState(trips);
   const [filteredCats, setFilteredCats] = useState([]);
-  const [matchedCats, setMatchedCats] = useState([]);
+  const [duration, setDuration] = useState("")
+
   const categories = [
     "adventure",
     "budget",
@@ -42,64 +43,68 @@ const Trips = ({ trips }) => {
     }
   };
 
-  //IF FILTERED CATS = TRIPS.MAP(TRIP CATEGORIES) then new searched trips.push trip
-
-  // useEffect(() => {
-
-  trips.map((trip) => {
-    {
-      trip.categories.map((cat) => {
-        console.log(typeof trip.categories);
-        console.log(typeof trip.filteredCats);
-
-        // if (cat === filteredCats[0] || filteredCats[1] || filteredCats[2] || filteredCats[3] || filteredCats[4] || filteredCats[5] || filteredCats[6] || filteredCats[7] || filteredCats[8] || filteredCats[9] || filteredCats[10] || filteredCats[11])
-        // {console.log('match', {cat}, {trip})}
-        // newArray.push({trip})}
-        // const newArray = [...newArray, {trip}]}
-        // {
-        //   setMatchedCats([...matchedCats, cat])
-        // }
-        //console.log('cat is', matchedCats);
-      });
-    }
-  });
-  // }, [filteredCats])
-
-  // if (cat = (categories[0] || categories[1] ||categories[2])) {
-  //newCatArray.push(cat)
-  //   })
-  // })
-
-  // if (searchedString !== '') {
-  //   const newSearchedTrips = trips.filter((trip) => {
-  //     return trip.location.toLowerCase().includes(searchedString.toLowerCase());
-  //   })
-
-  //     SetSearchedTrips(newSearchedTrips)
-
-  //   } else SetSearchedTrips(trips)
-  // }, [trips, filteredCats])
 
   useEffect(() => {
+    searchedTrips.map((trip) => {
+      console.log(trip.days.length <= duration)
+    })
+  }, [duration])
+
+  // let filteredDuration
+
+  // if (duration !== "") {
+  //   filteredDuration = newSearchedTrips.filter((trip) => {
+  //     if (trip.days.length <= duration) return trip
+  //   }) SetSearchedTrips(filteredDuration)
+  // } else SetSearchedTrips(newSearchedTrips)
+  
+  
+  useEffect(() => {
+    let newSearchedTrips
+    let filteredTrips
+    let filteredDuration
+
+
     if (searchedString !== "") {
-      const newSearchedTrips = trips.filter((trip) => {
+      newSearchedTrips = trips.filter((trip) => {
         return trip.location
-          .toLowerCase()
+        .toLowerCase()
           .includes(searchedString.toLowerCase());
-      });
+        });
       SetSearchedTrips(newSearchedTrips);
-    } else SetSearchedTrips(trips);
-  }, [trips, searchedString]);
+    } else newSearchedTrips = trips
+
+
+    if (filteredCats.length > 0) {
+      filteredTrips = newSearchedTrips.filter((trip) => {  
+        const result = filteredCats.filter((match) => {
+        if (trip.categories.includes(match)) return trip
+        })
+        if (result.length !== 0) return result
+      })
+      newSearchedTrips = filteredTrips
+        SetSearchedTrips(filteredTrips)
+    } else SetSearchedTrips(newSearchedTrips)
+
+
+    if (duration > 0) {
+      filteredDuration = newSearchedTrips.filter((trip) => {
+        if (trip.days.length <= duration) return trip
+      }) 
+      SetSearchedTrips(filteredDuration)
+    } else SetSearchedTrips(newSearchedTrips)
+
+  }, [trips, searchedString, filteredCats, duration]);
+
 
   return (
     <div className="tripsbody">
       <style>
         @import
         url('https://fonts.googleapis.com/css2?family=Domine:wght@500&display=swap');
-        @import
-        url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600&display=swap');{" "}
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&display=swap');
       </style>
-      <h1>All Trips</h1>
+      <h3 className='pagetitle'>Search trips by destination, theme or duration</h3>
 
       <div className="searchbar">
         <Search
@@ -119,7 +124,10 @@ const Trips = ({ trips }) => {
             callbackFilter={callbackFilter}
           />
 
-          <FilterDays />
+          <FilterDays
+            duration={duration}
+            filterDays={setDuration}
+             />
         </div>
       )}
 
@@ -130,8 +138,7 @@ const Trips = ({ trips }) => {
           return (
             <div className="trip" key={trip._id}>
               <Link to={trip._id}>
-                <p className="title">{trip.title}</p>
-              </Link>
+                <h3 className="title">{trip.title}</h3>
               <p>{trip.description}</p>
               <p>
                 <i className="fas fa-map-marker-alt"></i> {trip.location}
@@ -142,6 +149,7 @@ const Trips = ({ trips }) => {
               <p className="daynumber">
                 <i className="far fa-calendar-alt"></i> DAYS: {trip.days.length}
               </p>
+              </Link>
             </div>
           );
         })}
