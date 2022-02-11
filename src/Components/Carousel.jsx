@@ -5,13 +5,16 @@ import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import styles from "./Carousel.module.css";
 
 const Carousel = ({ trip }) => {
-  // const [currentPosition, setCurrentPosition] = useState(true);
+  const [arrayOfPics, setArrayOfPics] = useState(trip.image);
 
   const carousel = useRef(null);
 
   const handleLeftClick = (e) => {
     e.preventDefault();
     carousel.current.scrollLeft -= carousel.current.offsetWidth;
+
+    console.log("this is scrollLeft", carousel.current.scrollLeft);
+    console.log("this is offsetWidth", carousel.current.offsetWidth);
     // if (!carousel.current) {
     //   setCurrentPosition(true);
     // }
@@ -19,7 +22,14 @@ const Carousel = ({ trip }) => {
 
   const handleRightClick = (e) => {
     e.preventDefault();
+    // if (carousel.current.scrollLeft === 375) {
+    //   carousel.current.scrollLeft = 0;
+    // } else {
+    //   carousel.current.scrollLeft += carousel.current.offsetWidth;
+    // }
     carousel.current.scrollLeft += carousel.current.offsetWidth;
+    console.log("this is scrollLeft", carousel.current.scrollLeft);
+    console.log("this is offsetWidth", carousel.current.offsetWidth);
   };
   console.log("current pic:", carousel.current);
 

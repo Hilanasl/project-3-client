@@ -6,7 +6,10 @@ import Carousel from "../Components/Carousel";
 import MapContainer from "../Components/MapContainer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
-import { faSmileWink } from "@fortawesome/free-solid-svg-icons";
+{
+  /* <FontAwesomeIcon icon="fa-light fa-lightbulb-exclamation" /> */
+}
+// import { faLightbulbExclamation } from "@fortawesome/free-solid-svg-icons";
 import styles from "./TripDetails.module.css";
 
 const TripDetails = ({ favesClick, faves }) => {
@@ -37,7 +40,7 @@ const TripDetails = ({ favesClick, faves }) => {
             <h3>{trip.description}</h3>
             <h3>Contributed by: {trip.author.username}</h3>
           </div>
-          <div></div>;
+          <div></div>
           <div>
             <img className={styles.biggerPic} src={trip.image[0]} alt="" />
           </div>
@@ -80,9 +83,9 @@ const TripDetails = ({ favesClick, faves }) => {
                             {activity.address}
                           </p>
                           <p>
-                            <b>
+                            {/* <b>
                               <FontAwesomeIcon icon={faSmileWink} />:{" "}
-                            </b>
+                            </b> */}
                             {activity.description}
                           </p>
                           <br />
@@ -95,7 +98,7 @@ const TripDetails = ({ favesClick, faves }) => {
             })}
           </div>
           <Carousel trip={trip} />
-          <MapContainer />
+          <MapContainer id={id} />
         </>
       ) : (
         <p>Sorry, no trip yet!</p>

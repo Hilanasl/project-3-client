@@ -9,9 +9,7 @@ import SignIn from "./Pages/SignIn";
 import SignUp from "./Pages/SignUp";
 import Profile from "./Pages/Profile";
 import TripForm from "./Pages/TripForm";
-// import PrivateRoute from "./Components/PrivateRoute";
 import apiHandler from "./api/apiHandler";
-import Carousel from "./Components/Carousel";
 import useAuth from "./auth/useAuth";
 import FormUpdate from "./Pages/FormUpdate";
 
@@ -47,14 +45,14 @@ function App() {
       .catch((err) => console.error(err));
   };
 
-  // const favesClick = (id) => {
-  //   apiHandler
-  //     .patch("/users/favourites/" + id)
-  //     .then(({ updatedTrip }) => {
-  //       console.log('new trip', updatedTrip)
-  //       })
-  //     .catch((err) => console.error(err));
-  // }
+  // const handleDelete = async (id) => {
+  //   try {
+  //     await apiHandler.delete(`/profile/${id}/delete`);
+  //     setTrips(data);
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // };
 
   return (
     <div className="App">

@@ -39,7 +39,7 @@ async function handlePlaceSelect(updateQuery) {
     name: "address",
     value: addressObject.formatted_address,
     address: addressObject.formatted_address,
-    coords: [lat(), lng()],
+    coords: { coordinates: [lat(), lng()] },
   });
   console.log("addressObject", addressObject);
 }
@@ -50,7 +50,7 @@ function SearchLocationInput({ address, activityChange, activityNumber }) {
 
   useEffect(() => {
     loadScript(
-      `https://maps.googleapis.com/maps/api/js?key=AIzaSyDEaeUiFD9oAnB1LNDiK-GWyDq6zS9HWS4&libraries=places`,
+      `https://maps.googleapis.com/maps/api/js?key=import.meta.env.VITE_APP_GOOGLE_API_KEY&libraries=places`,
       () => handleScriptLoad(setQuery, autoCompleteRef)
     );
   }, []);
