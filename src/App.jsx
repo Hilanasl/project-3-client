@@ -45,15 +45,6 @@ function App() {
       .catch((err) => console.error(err));
   };
 
-  // const handleDelete = async (id) => {
-  //   try {
-  //     await apiHandler.delete(`/profile/${id}/delete`);
-  //     setTrips(data);
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // };
-
   return (
     <div className="App">
       <Navbar />
@@ -63,7 +54,7 @@ function App() {
         <Route
           path="/trips/:id"
           element={
-            <TripDetails trips={trips} favesClick={favesClick} faves={faves}  />
+            <TripDetails trips={trips} favesClick={favesClick} faves={faves} />
           }
         />
         <Route path="/signup" element={<SignUp />} />
