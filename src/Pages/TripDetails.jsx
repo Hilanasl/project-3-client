@@ -6,10 +6,7 @@ import Carousel from "../Components/Carousel";
 import MapContainer from "../Components/MapContainer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
-{
-  /* <FontAwesomeIcon icon="fa-light fa-lightbulb-exclamation" /> */
-}
-// import { faLightbulbExclamation } from "@fortawesome/free-solid-svg-icons";
+import { faLightbulb } from "@fortawesome/free-solid-svg-icons";
 import styles from "./TripDetails.module.css";
 
 const TripDetails = ({ favesClick, faves }) => {
@@ -80,14 +77,20 @@ const TripDetails = ({ favesClick, faves }) => {
                           </p>
                           <p>
                             <b>
-                              <FontAwesomeIcon icon={faMapMarkerAlt} />{" "}
+                              <FontAwesomeIcon
+                                className={styles.fontcons}
+                                icon={faMapMarkerAlt}
+                              />{" "}
                             </b>
                             {activity.address}
                           </p>
                           <p>
-                            {/* <b>
-                              <FontAwesomeIcon icon={faSmileWink} />:{" "}
-                            </b> */}
+                            <b>
+                              <FontAwesomeIcon
+                                className={styles.fontcons}
+                                icon={faLightbulb}
+                              />{" "}
+                            </b>
                             {activity.description}
                           </p>
                           <br />
