@@ -13,7 +13,7 @@ import TripForm from "./Pages/TripForm";
 import apiHandler from "./api/apiHandler";
 import Carousel from "./Components/Carousel";
 import useAuth from "./auth/useAuth";
-
+import FormUpdate from "./Pages/FormUpdate";
 
 function App() {
   const [trips, setTrips] = useState([]);
@@ -30,12 +30,11 @@ function App() {
       .catch((err) => console.error(err));
   }, []);
 
-
   useEffect(() => {
-    if(currentUser) {
-      setFaves(currentUser.favourites)
-    } 
-  }, [isLoggedIn])
+    if (currentUser) {
+      setFaves(currentUser.favourites);
+    }
+  }, [isLoggedIn]);
 
   const favesClick = (id) => {
     apiHandler
@@ -65,12 +64,17 @@ function App() {
       <Routes>
         <Route path="/" element={<Home trips={trips} />} />
         <Route path="/trips" element={<Trips trips={trips} />} />
-        <Route path="/trips/:id" element={<TripDetails trips={trips} favesClick={favesClick} faves={faves}/>} />
+        <Route
+          path="/trips/:id"
+          element={
+            <TripDetails trips={trips} favesClick={favesClick} faves={faves} />
+          }
+        />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
-        <Route path="/profile" element={<Profile faves={faves}/>} />
+        <Route path="/profile" element={<Profile faves={faves} />} />
         <Route path="/profile/create" element={<TripForm />} />
-        <Route path="/profile/:id/update" element={<TripForm />} />
+        <Route path="/profile/:id/update" element={<FormUpdate />} />
       </Routes>
     </div>
   );
