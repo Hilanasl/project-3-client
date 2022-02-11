@@ -33,19 +33,17 @@ const Carousel = ({ trip }) => {
       <div className={styles.container}>
         <div className={styles.carousel} ref={carousel}>
           {trip.image?.map((pic, index) => (
-            <div className={styles.item} key={index}>
-              <div className={styles.image}>
-                <img src={pic} alt="" />
-              </div>
+            <div className={styles.image} key={index}>
+              <img src={pic} alt="" />
             </div>
           ))}
         </div>
       </div>
-      <div className={styles.buttons}>
-        <button onClick={handleLeftClick}>
+      <div className={styles.carouselBtns}>
+        <button className={styles.chevron} onClick={handleLeftClick}>
           <FontAwesomeIcon icon={faChevronLeft} />
         </button>
-        <button onClick={handleRightClick}>
+        <button className={styles.chevron} onClick={handleRightClick}>
           <FontAwesomeIcon icon={faChevronRight} />
         </button>
       </div>

@@ -19,7 +19,7 @@ function App() {
   const [trips, setTrips] = useState([]);
   const [faves, setFaves] = useState([]);
   const [favedBy, setFavedBy] = useState([]);
-  const { currentUser, isLoggedIn, storeToken } = useAuth()
+  const { currentUser, isLoggedIn, storeToken } = useAuth();
 
   useEffect(() => {
     apiHandler
@@ -42,12 +42,19 @@ function App() {
       .then(({ data }) => {
         setFaves(data.updatedUser.favourites);
         setFavedBy(data.updatedTrip.favedBy);
-        console.log('fave length', data.updatedTrip.favedBy.length)
-
-        })
+        console.log("all data", data);
+      })
       .catch((err) => console.error(err));
-}
+  };
 
+  // const favesClick = (id) => {
+  //   apiHandler
+  //     .patch("/users/favourites/" + id)
+  //     .then(({ updatedTrip }) => {
+  //       console.log('new trip', updatedTrip)
+  //       })
+  //     .catch((err) => console.error(err));
+  // }
 
   return (
     <div className="App">

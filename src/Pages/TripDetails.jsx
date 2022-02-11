@@ -9,12 +9,10 @@ import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { faSmileWink } from "@fortawesome/free-solid-svg-icons";
 import styles from "./TripDetails.module.css";
 
-const TripDetails = ({favesClick, faves}) => {
+const TripDetails = ({ favesClick, faves }) => {
   const [trip, setTrip] = useState({});
   const { id } = useParams();
-  const { currentUser, isLoggedIn, storeToken } = useAuth()
-
-
+  const { currentUser, isLoggedIn, storeToken } = useAuth();
 
   useEffect(() => {
     apiHandler
@@ -26,14 +24,15 @@ const TripDetails = ({favesClick, faves}) => {
   }, [id]);
 
 
-
   return (
     <div className={styles.detailsBody}>
       {trip.days ? (
         <>
           <div className={styles.detailsHeader}>
             <h1>{trip.title}</h1>
-            <h2><FontAwesomeIcon icon={faMapMarkerAlt} /> {trip.location}</h2>
+            <h2>
+              <FontAwesomeIcon icon={faMapMarkerAlt} /> {trip.location}
+            </h2>
             <h3>{trip.description}</h3>
             <h3>Contributed by: {trip.author.username}</h3>
           </div>
@@ -58,9 +57,8 @@ const TripDetails = ({favesClick, faves}) => {
           </div>
           )}
           <Link to="/trips">
-          <button>Back to trips</button>
+            <button>Back to trips</button>
           </Link>
-
           <div className={styles.containerWrapper}>
             {trip.days.map((day) => {
               return (
@@ -72,12 +70,12 @@ const TripDetails = ({favesClick, faves}) => {
                     {day.activities.map((activity) => {
                       return (
                         <div key={activity._id}>
-                          <p>
-                            <b>{activity.title}</b>
+                          <p className={styles.activitiesTitle}>
+                            {activity.title}
                           </p>
                           <p>
                             <b>
-                              <FontAwesomeIcon icon={faMapMarkerAlt} />:{" "}
+                              <FontAwesomeIcon icon={faMapMarkerAlt} />{" "}
                             </b>
                             {activity.address}
                           </p>

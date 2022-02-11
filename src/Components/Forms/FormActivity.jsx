@@ -10,6 +10,7 @@ const FormActivity = ({
   update,
 }) => {
   const activityChange = (e) => {
+    console.log(e.target, "<<< ici");
     setDays((prevState) => {
       const newState = [...prevState];
       //    Global state [Day X]  [Activity X]  {title....}
@@ -25,8 +26,9 @@ const FormActivity = ({
       return newState;
     });
   };
+
   return (
-    <div className='crudform'>
+    <div className="crudform">
       <div>
         <label htmlFor={"activityTitle-" + activityNumber}>Title</label>
         <input

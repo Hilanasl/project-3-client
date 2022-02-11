@@ -1,5 +1,5 @@
-import React from "react";
-import { GoogleMap, LoadScript } from "@react-google-maps/api";
+import React, { useEffect, useState } from "react";
+import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 
 const MapContainer = () => {
   const mapStyles = {
@@ -7,9 +7,24 @@ const MapContainer = () => {
     width: "60%",
   };
 
-  const defaultCenter = {
-    lat: 48.8528,
-    lng: 2.3883,
+  const [currentPosition, setCurrentPosition] = useState({});
+
+  const success = (position) => {
+    const currentPosition = {
+      lat: position.coords.latitude,
+      lng: position.coords.longitude,
+    };
+    setCurrentPosition(currentPosition);
+  };
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(success);
+  });
+
+  const onMarkerDragEnd = (e) => {
+    const lat = e.latLng.lat();
+    const lng = e.latLng.lng();
+    setCurrentPosition({ lat, lng });
   };
 
   return (
@@ -17,8 +32,16 @@ const MapContainer = () => {
       <GoogleMap
         mapContainerStyle={mapStyles}
         zoom={13}
-        center={defaultCenter}
-      />
+        center={currentPosition}
+      >
+        {currentPosition.lat ? (
+          <Marker
+            position={currentPosition}
+            onDragEnd={(e) => onMarkerDragEnd(e)}
+            draggable={true}
+          />
+        ) : null}
+      </GoogleMap>
     </LoadScript>
   );
 };
