@@ -17,11 +17,7 @@ import useAuth from "./auth/useAuth";
 function App() {
   const [trips, setTrips] = useState([]);
   const [faves, setFaves] = useState([]);
-<<<<<<< HEAD
   const { currentUser, isLoggedIn, storeToken } = useAuth();
-=======
-  const { currentUser, isLoggedIn, storeToken } = useAuth()
->>>>>>> 6e35318c065faeb49c5b7aa0b9aaf2dda4bd1c29
 
   useEffect(() => {
     apiHandler
@@ -31,7 +27,6 @@ function App() {
       })
       .catch((err) => console.error(err));
   }, []);
-
 
   useEffect(() => {
     if (currentUser) {
@@ -48,18 +43,15 @@ function App() {
       .catch((err) => console.error(err));
   };
 
-<<<<<<< HEAD
   // const handleDelete = async (id) => {
   //   try {
   //     await apiHandler.delete(`/api/trips/${id}`);
-  //     fetchCats();
+  //     setTrips(data);
   //   } catch (err) {
   //     console.error(err);
   //   }
   // };
 
-=======
->>>>>>> 6e35318c065faeb49c5b7aa0b9aaf2dda4bd1c29
   return (
     <div className="App">
       <Navbar />
@@ -74,7 +66,7 @@ function App() {
         />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
-        <Route path="/profile" element={<Profile faves={faves}/>} />
+        <Route path="/profile" element={<Profile faves={faves} />} />
         <Route path="/profile/create" element={<TripForm />} />
         <Route path="/profile/:id/update" element={<TripForm />} />
       </Routes>

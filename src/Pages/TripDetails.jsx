@@ -75,7 +75,7 @@ const TripDetails = ({ favesClick, faves }) => {
                           </p>
                           <p>
                             <b>
-                              <FontAwesomeIcon icon={faMapMarkerAlt} />:{" "}
+                              <FontAwesomeIcon icon={faMapMarkerAlt} />{" "}
                             </b>
                             {activity.address}
                           </p>

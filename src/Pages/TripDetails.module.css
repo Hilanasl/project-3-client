@@ -14,7 +14,7 @@
   width: 150px;
   height: inherit;
   background-color: rgb(33, 41, 54);
-  color: #e1c49e;
+  color: #93c0a0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -76,4 +76,9 @@
 
 .detailsBody i {
   color: #777575;
+}
+
+.activitiesTitle {
+  font-size: 1.1em;
+  font-weight: 600;
 }

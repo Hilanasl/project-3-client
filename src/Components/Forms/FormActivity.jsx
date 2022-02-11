@@ -23,8 +23,9 @@ const FormActivity = ({
       return newState;
     });
   };
+
   return (
-    <div className='crudform'>
+    <div className="crudform">
       <div>
         <label htmlFor={"activityTitle-" + activityNumber}>Title</label>
         <input
