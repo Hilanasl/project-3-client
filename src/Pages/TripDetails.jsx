@@ -23,6 +23,8 @@ const TripDetails = ({ favesClick, faves }) => {
       .catch((e) => console.log(e));
   }, [id]);
 
+  console.log(faves, "favessss");
+
   return (
     <div className={styles.detailsBody}>
       {trip.days ? (
@@ -35,11 +37,10 @@ const TripDetails = ({ favesClick, faves }) => {
             <h3>{trip.description}</h3>
             <h3>Contributed by: {trip.author.username}</h3>
           </div>
-
+          <div></div>;
           <div>
             <img className={styles.biggerPic} src={trip.image[0]} alt="" />
           </div>
-
           {isLoggedIn && (
             <div className="tripsbtn">
               {!faves.includes(id) && (
@@ -58,7 +59,6 @@ const TripDetails = ({ favesClick, faves }) => {
           <Link to="/trips">
             <button>Back to trips</button>
           </Link>
-
           <div className={styles.containerWrapper}>
             {trip.days.map((day) => {
               return (

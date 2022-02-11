@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import FormActivity from "./FormActivity";
 
-const FormDay = ({ dayNumber, activities, setDays }) => {
+const FormDay = ({ dayNumber, activities, setDays, update }) => {
   console.log("It's a brand new day !");
 
   // ADD AN ACTIVITY
@@ -9,10 +9,15 @@ const FormDay = ({ dayNumber, activities, setDays }) => {
     event.preventDefault();
     setDays((prevState) => {
       const newState = [...prevState];
-      newState[dayNumber] = [
-        ...newState[dayNumber],
-        { title: "", address: "", description: "" },
-      ];
+      update
+        ? (newState[dayNumber].activities = [
+            ...newState[dayNumber].activities,
+            { title: "", address: "", description: "" },
+          ])
+        : (newState[dayNumber] = [
+            ...newState[dayNumber],
+            { title: "", address: "", description: "" },
+          ]);
       return newState;
     });
   };
@@ -38,6 +43,7 @@ const FormDay = ({ dayNumber, activities, setDays }) => {
           activityNumber={i}
           setDays={setDays}
           key={i}
+          update={update}
         />
       ))}
       <button onClick={addActivity} className='activitybutton'>ADD ACTIVITY <i class="fa-solid fa-plus"></i></button>
