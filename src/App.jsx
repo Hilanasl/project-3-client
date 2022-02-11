@@ -18,6 +18,7 @@ import useAuth from "./auth/useAuth";
 function App() {
   const [trips, setTrips] = useState([]);
   const [faves, setFaves] = useState([]);
+  const [favedBy, setFavedBy] = useState([]);
   const { currentUser, isLoggedIn, storeToken } = useAuth()
 
   useEffect(() => {
@@ -40,10 +41,22 @@ function App() {
     apiHandler
       .patch("/users/favourites/" + id)
       .then(({ data }) => {
-        setFaves(data.favourites);
+        setFaves(data.updatedUser.favourites);
+        setFavedBy(data.updatedTrip.favedBy);
+        console.log('all data', data)
+
         })
       .catch((err) => console.error(err));
 }
+
+// const favesClick = (id) => {
+//   apiHandler
+//     .patch("/users/favourites/" + id)
+//     .then(({ updatedTrip }) => {
+//       console.log('new trip', updatedTrip)
+//       })
+//     .catch((err) => console.error(err));
+// }
 
 
   return (

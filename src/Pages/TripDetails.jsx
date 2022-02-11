@@ -15,6 +15,7 @@ const TripDetails = ({favesClick, faves}) => {
   const { currentUser, isLoggedIn, storeToken } = useAuth()
 
 
+
   useEffect(() => {
     apiHandler
       .get("http://localhost:8000/trips/" + id)
@@ -23,6 +24,8 @@ const TripDetails = ({favesClick, faves}) => {
       })
       .catch((e) => console.log(e));
   }, [id]);
+
+  console.log(faves, 'favessss')
 
 
   return (
@@ -35,6 +38,11 @@ const TripDetails = ({favesClick, faves}) => {
             <h3>{trip.description}</h3>
             <h3>Contributed by: {trip.author.username}</h3>
           </div>
+
+          <div>
+
+
+  </div>;
 
           <div>
             <img className={styles.biggerPic} src={trip.image[0]} alt="" />

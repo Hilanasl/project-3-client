@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useAuth from "../auth/useAuth";
-//import apiHandler from '../api/apiHandler.js';
+import apiHandler from '../api/apiHandler.js';
 import Search from "./../Components/Search";
 import FilterCats from "../Components/FilterCats";
 import FilterDays from "../Components/FilterDays";
@@ -12,7 +12,8 @@ const Trips = ({ trips }) => {
   const [searchedString, setSearchedString] = useState("");
   const [searchedTrips, SetSearchedTrips] = useState(trips);
   const [filteredCats, setFilteredCats] = useState([]);
-  const [duration, setDuration] = useState("")
+  const [duration, setDuration] = useState("");
+
 
   const categories = [
     "adventure",
@@ -43,22 +44,12 @@ const Trips = ({ trips }) => {
     }
   };
 
-
   useEffect(() => {
     searchedTrips.map((trip) => {
       console.log(trip.days.length <= duration)
     })
   }, [duration])
 
-  // let filteredDuration
-
-  // if (duration !== "") {
-  //   filteredDuration = newSearchedTrips.filter((trip) => {
-  //     if (trip.days.length <= duration) return trip
-  //   }) SetSearchedTrips(filteredDuration)
-  // } else SetSearchedTrips(newSearchedTrips)
-  
-  
   useEffect(() => {
     let newSearchedTrips
     let filteredTrips
@@ -74,7 +65,6 @@ const Trips = ({ trips }) => {
       SetSearchedTrips(newSearchedTrips);
     } else newSearchedTrips = trips
 
-
     if (filteredCats.length > 0) {
       filteredTrips = newSearchedTrips.filter((trip) => {  
         const result = filteredCats.filter((match) => {
@@ -85,7 +75,6 @@ const Trips = ({ trips }) => {
       newSearchedTrips = filteredTrips
         SetSearchedTrips(filteredTrips)
     } else SetSearchedTrips(newSearchedTrips)
-
 
     if (duration > 0) {
       filteredDuration = newSearchedTrips.filter((trip) => {

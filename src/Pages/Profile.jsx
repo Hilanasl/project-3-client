@@ -4,17 +4,29 @@ import styles from "./Profile.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import apiHandler from "./../api/apiHandler";
+import useAuth from "./../auth/useAuth";
+
 
 
 const Profile = () => {
-
-  const [usersFaves, setUsersFaves] = useState([])
+  const { currentUser, isLoggedIn, storeToken } = useAuth();
+  const [usersFaves, setUsersFaves] = useState([]);
+  const [usersAdds, setUsersAdds] = useState([]);
 
   useEffect(() => {
     apiHandler
-      .get("/users/profile")
+      .get("/users/profile/faves")
       .then(({ data }) => {
         setUsersFaves(data.favourites);
+      })
+      .catch((err) => console.error(err));
+  }, []);
+
+  useEffect(() => {
+    apiHandler
+      .get("/users/profile/added")
+      .then(({ data }) => {
+        setUsersAdds(data);
       })
       .catch((err) => console.error(err));
   }, []);
@@ -46,9 +58,6 @@ const Profile = () => {
 
           </section>
 
-
-
-
         <h2>Your favourite itineraries</h2>
 
         <section className={styles.favoritesProfile}>
@@ -74,7 +83,25 @@ const Profile = () => {
 
         <h2>Your added trips</h2>
         <section className={styles.favoritesProfile}>
-        <p>waiting for added trips</p>
+        <div className={styles.favtrips}>
+
+        {usersAdds.map((trip) => {
+            return (
+            <div className={styles.proftrip} key={trip._id}>
+
+            <p>{trip.title}</p>
+            <p>{trip.description}</p>
+            <p><i className="fas fa-map-marker-alt"></i> {trip.location}</p>
+            <img src={trip?.image[0]} alt=""/>
+
+            <Link to={`/trips/${trip._id}`}>
+            <button>See full itinerary</button>
+            </Link>
+            </div>
+            )
+          })}
+
+        </div>
         </section>
       </div>
     </div>
