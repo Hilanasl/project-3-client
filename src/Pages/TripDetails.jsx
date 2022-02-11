@@ -26,8 +26,6 @@ const TripDetails = ({ favesClick, faves }) => {
       .catch((e) => console.log(e));
   }, [id]);
 
-  console.log(faves, "favessss");
-
   return (
     <div className={styles.detailsBody}>
       {trip.days ? (
@@ -44,15 +42,19 @@ const TripDetails = ({ favesClick, faves }) => {
           <div>
             <img className={styles.biggerPic} src={trip.image[0]} alt="" />
           </div>
+          <h3>
+            Favourited by: {trip.favedBy.length}{" "}
+            <i className="fa-solid fa-heart"></i>
+          </h3>
           {isLoggedIn && (
             <div className="tripsbtn">
               {!faves.includes(id) && (
-                <button className={styles.btn} onClick={() => favesClick(id)}>
+                <button onClick={() => favesClick(id)}>
                   Favourite <i className="fa-solid fa-sun"></i>
                 </button>
               )}
               {faves.includes(id) && (
-                <button className={styles.btn} onClick={() => favesClick(id)}>
+                <button onClick={() => favesClick(id)}>
                   Unfavourite{" "}
                   <i className="fa-solid fa-cloud-showers-heavy"></i>
                 </button>

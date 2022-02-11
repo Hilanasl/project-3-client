@@ -10,16 +10,10 @@
 .tripsbody .pagetitle {
   font-family: "Open Sans", sans-serif;
   font-size: 25px;
-  color: rgb(53, 52, 52);
-  font-weight: lighter;
+  color: #353434;
+  font-weight: 400;
 }
 
-.tripsbody h1 {
-    font-family: "Open Sans", sans-serif;
-    font-size: 40px;
-    color: rgb(53, 52, 52);
-    font-weight: lighter;
-}
 
 
 .searchbar {
@@ -37,6 +31,11 @@
     width: 95vw;
     padding: 5px;
     overflow: scroll;
+    justify-content: space-between;
+  }
+
+  .tripscontainer i {
+    color: whitesmoke
   }
   
   .trip {
@@ -58,16 +57,20 @@
 
   }
 
+  .triptext {
+    height: 300px
+  }
+
   .title {
     font-family: 'Domine', serif;
     font-size: 20px;
     color: rgb(234, 237, 241);
-
 }
   
   .trip img {
-    max-width: 19vw;
-    max-height: 15vw
+    width: 19vw;
+    height: 15vw;
+    object-fit: cover;
   }
   
   .daynumber, .trip a {

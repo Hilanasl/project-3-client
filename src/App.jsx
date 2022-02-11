@@ -63,7 +63,7 @@ function App() {
         <Route
           path="/trips/:id"
           element={
-            <TripDetails trips={trips} favesClick={favesClick} faves={faves} />
+            <TripDetails trips={trips} favesClick={favesClick} faves={faves}  />
           }
         />
         <Route path="/signup" element={<SignUp />} />

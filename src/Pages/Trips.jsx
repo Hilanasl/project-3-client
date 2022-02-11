@@ -15,6 +15,7 @@ const Trips = ({ trips }) => {
   const [duration, setDuration] = useState("");
 
 
+
   const categories = [
     "adventure",
     "budget",
@@ -85,6 +86,9 @@ const Trips = ({ trips }) => {
 
   }, [trips, searchedString, filteredCats, duration]);
 
+  // console.log(searchedTrips[1].favedBy.length)
+
+
 
   return (
     <div className="tripsbody">
@@ -127,13 +131,18 @@ const Trips = ({ trips }) => {
           return (
             <div className="trip" key={trip._id}>
               <Link to={trip._id}>
-                <h3 className="title">{trip.title}</h3>
+
+              <div className='triptext'>
+              <h3 className="title">{trip.title}</h3>
               <p>{trip.description}</p>
               <p>
-                <i className="fas fa-map-marker-alt"></i> {trip.location}
+              <i className="fas fa-map-marker-alt"></i> {trip.location}
               </p>
               <p>{trip.categories.join(", ")}</p>
               <p>Contributor: {trip.author.username}</p>
+              <p>{trip.favedBy.length} <i className="fa-solid fa-heart"></i></p>
+              </div>
+              
               <img src={trip.image[0]} alt="" />
               <p className="daynumber">
                 <i className="far fa-calendar-alt"></i> DAYS: {trip.days.length}

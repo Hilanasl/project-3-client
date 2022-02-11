@@ -61,7 +61,6 @@ button {
   text-decoration: none;
   font-size: 18px;
   color: rgb(0, 15, 5);
-  border: 2px solid rgb(216, 214, 196);
 }
 
 .navbar a:hover,
