@@ -25,7 +25,6 @@ const TripDetails = ({favesClick, faves}) => {
       .catch((e) => console.log(e));
   }, [id]);
 
-  console.log(faves, 'favessss')
 
 
   return (
@@ -42,12 +41,12 @@ const TripDetails = ({favesClick, faves}) => {
           <div>
 
 
-  </div>;
+  </div>
 
           <div>
             <img className={styles.biggerPic} src={trip.image[0]} alt="" />
           </div>
-
+          <h3>Favourited by: {trip.favedBy.length} <i className="fa-solid fa-heart"></i></h3>
           {isLoggedIn && ( 
           <div className='tripsbtn'>
           {!faves.includes(id) && (

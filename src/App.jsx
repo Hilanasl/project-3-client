@@ -42,20 +42,11 @@ function App() {
       .then(({ data }) => {
         setFaves(data.updatedUser.favourites);
         setFavedBy(data.updatedTrip.favedBy);
-        console.log('all data', data)
+        console.log('fave length', data.updatedTrip.favedBy.length)
 
         })
       .catch((err) => console.error(err));
 }
-
-// const favesClick = (id) => {
-//   apiHandler
-//     .patch("/users/favourites/" + id)
-//     .then(({ updatedTrip }) => {
-//       console.log('new trip', updatedTrip)
-//       })
-//     .catch((err) => console.error(err));
-// }
 
 
   return (
@@ -67,7 +58,7 @@ function App() {
         <Route
           path="/trips/:id"
           element={
-            <TripDetails trips={trips} favesClick={favesClick} faves={faves} />
+            <TripDetails trips={trips} favesClick={favesClick} faves={faves}  />
           }
         />
         <Route path="/signup" element={<SignUp />} />

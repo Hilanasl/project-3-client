@@ -15,8 +15,7 @@ const Navbar = () => {
       <NavLink to="/">Home</NavLink>
       <NavLink to="/trips">Trips</NavLink>
 
-      <h1 className='logo'>bon voyage</h1>
-
+      <a href="/"><h1 className='logo'>bon voyage</h1></a>
 
       {!isLoggedIn && (
         <>

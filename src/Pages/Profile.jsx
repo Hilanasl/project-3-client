@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import apiHandler from "./../api/apiHandler";
 import useAuth from "./../auth/useAuth";
+import { Navigate } from "react-router-dom";
 
 
 
@@ -12,6 +13,7 @@ const Profile = () => {
   const { currentUser, isLoggedIn, storeToken } = useAuth();
   const [usersFaves, setUsersFaves] = useState([]);
   const [usersAdds, setUsersAdds] = useState([]);
+  
 
   useEffect(() => {
     apiHandler
@@ -39,27 +41,28 @@ const Profile = () => {
       url('https://fonts.googleapis.com/css2?family=Domine:wght@500&display=swap');
       @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&display=swap');
       </style>
-      <div>
-      <h1>Welcome to your Travel Board!</h1>
-      </div>
+
 
       <div className={styles.profileSection}>
 
-        <section className={styles.addTripContainer}>
+      
+
+      <section className={styles.addTripContainer}>
 
         <div className={styles.createtrip}>
         <Link to={"/profile/create"}>
           <h2>
             Let others discover your trips!</h2>
             <><FontAwesomeIcon icon={faPlus} className={styles.plusIcon} /></>
-          <h2>Create a new trip</h2>
+          <h2>Create itinerary</h2>
           </Link>
           </div>
 
           </section>
 
-        <h2>Your favourite itineraries</h2>
 
+
+        <h2>Your favourite itineraries</h2>
         <section className={styles.favoritesProfile}>
           <div className={styles.favtrips}>
 
@@ -67,7 +70,7 @@ const Profile = () => {
             return (
             <div className={styles.proftrip} key={trip._id}>
 
-            <p>{trip.title}</p>
+            <p className={styles.proftriptitle}>{trip.title}</p>
             <p>{trip.description}</p>
             <p><i className="fas fa-map-marker-alt"></i> {trip.location}</p>
             <img src={trip?.image[0]} alt=""/>
@@ -89,14 +92,19 @@ const Profile = () => {
             return (
             <div className={styles.proftrip} key={trip._id}>
 
-            <p>{trip.title}</p>
+            <p className={styles.proftriptitle}>{trip.title}</p>
             <p>{trip.description}</p>
             <p><i className="fas fa-map-marker-alt"></i> {trip.location}</p>
             <img src={trip?.image[0]} alt=""/>
 
+
+            <div className={styles.profbuttons}>
+            <a href={`/profile/${trip._id}/update`}><i className="fa-solid fa-pen"></i></a>
             <Link to={`/trips/${trip._id}`}>
             <button>See full itinerary</button>
             </Link>
+            <a href={`/profile/${trip._id}/delete`}><i className="fa-solid fa-trash-can"></i></a>
+            </div>
             </div>
             )
           })}
