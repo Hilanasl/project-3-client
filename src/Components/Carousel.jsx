@@ -12,34 +12,16 @@ const Carousel = ({ trip }) => {
   const handleLeftClick = (e) => {
     e.preventDefault();
     carousel.current.scrollLeft -= carousel.current.offsetWidth;
-
-    console.log("this is scrollLeft", carousel.current.scrollLeft);
-    console.log("this is offsetWidth", carousel.current.offsetWidth);
-    // if (!carousel.current) {
-    //   setCurrentPosition(true);
-    // }
   };
 
   const handleRightClick = (e) => {
     e.preventDefault();
-    // if (carousel.current.scrollLeft === 375) {
-    //   carousel.current.scrollLeft = 0;
-    // } else {
-    //   carousel.current.scrollLeft += carousel.current.offsetWidth;
-    // }
     carousel.current.scrollLeft += carousel.current.offsetWidth;
-    console.log("this is scrollLeft", carousel.current.scrollLeft);
-    console.log("this is offsetWidth", carousel.current.offsetWidth);
   };
   console.log("current pic:", carousel.current);
 
   return (
     <div>
-      <style>
-        @import
-        url('https://fonts.googleapis.com/css2?family=Domine:wght@500&family=Montserrat&family=Open+Sans&display=swap"
-        rel="stylesheet');
-      </style>
       <div className={styles.container}>
         <div className={styles.carousel} ref={carousel}>
           {trip.image?.map((pic, index) => (

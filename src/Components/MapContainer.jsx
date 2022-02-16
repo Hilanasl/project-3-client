@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
-import apiHandler from "../api/apiHandler";
 
 const MapContainer = ({ id }) => {
   const mapStyles = {

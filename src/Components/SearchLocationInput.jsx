@@ -25,7 +25,6 @@ function handleScriptLoad(updateQuery, autoCompleteRef) {
   autoComplete = new window.google.maps.places.Autocomplete(
     autoCompleteRef.current
   );
-  //autoComplete.setFields(["address_components", "formatted_address"]);
   autoComplete.addListener("place_changed", () =>
     handlePlaceSelect(updateQuery)
   );
@@ -34,7 +33,6 @@ function handleScriptLoad(updateQuery, autoCompleteRef) {
 async function handlePlaceSelect(updateQuery) {
   const addressObject = autoComplete.getPlace();
   const { lat, lng } = addressObject.geometry.location;
-  //updateQuery(query);
   updateQuery({
     name: "address",
     value: addressObject.formatted_address,
@@ -50,7 +48,9 @@ function SearchLocationInput({ address, activityChange, activityNumber }) {
 
   useEffect(() => {
     loadScript(
-      `https://maps.googleapis.com/maps/api/js?key=AIzaSyDEaeUiFD9oAnB1LNDiK-GWyDq6zS9HWS4&libraries=places`,
+      `https://maps.googleapis.com/maps/api/js?key=${
+        import.meta.env.VITE_APP_GOOGLE_API_KEY
+      }&libraries=places`,
       () => handleScriptLoad(setQuery, autoCompleteRef)
     );
   }, []);

@@ -78,7 +78,7 @@ const TripDetails = ({ favesClick, faves }) => {
                           <p>
                             <b>
                               <FontAwesomeIcon
-                                className={styles.fontcons}
+                                className={styles.fontIcons}
                                 icon={faMapMarkerAlt}
                               />{" "}
                             </b>
@@ -87,7 +87,7 @@ const TripDetails = ({ favesClick, faves }) => {
                           <p>
                             <b>
                               <FontAwesomeIcon
-                                className={styles.fontcons}
+                                className={styles.fontIcons}
                                 icon={faLightbulb}
                               />{" "}
                             </b>
