@@ -34,11 +34,12 @@ export default function FormUpdate() {
       const { data } = await apiHandler.get("/trips/" + params.id);
       console.log(data);
       setTitle(data.title);
-      setCategories(data.categories);
+      setCategories(data.categories); // doesn't work
       setLocation(data.location);
       setDescription(data.description);
       //   const days = data.days.map((day) => (day = day.activities));
       setDays(data.days);
+      // image ?
     };
     x();
   }, [params.id]);
