@@ -2,7 +2,6 @@ import React from "react";
 import SearchLocationInput from "../SearchLocationInput";
 
 const FormActivity = ({
-  // callback,
   activity,
   setDays,
   activityNumber,
@@ -33,7 +32,7 @@ const FormActivity = ({
         <label htmlFor={"activityTitle-" + activityNumber}>Title</label>
         <input
           type="text"
-          name="title" // should I let it ? bc that's not what I was submitting to back. Same as TripForm
+          name="title"
           id={`activityTitle-${activityNumber}`}
           className="crud-long-input"
           value={activity.title}
