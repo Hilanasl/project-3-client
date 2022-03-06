@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import useAuth from "../auth/useAuth";
-import apiHandler from '../api/apiHandler.js';
 import Search from "./../Components/Search";
 import FilterCats from "../Components/FilterCats";
 import FilterDays from "../Components/FilterDays";
-import './../AllTrips.css'
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFilter } from "@fortawesome/free-solid-svg-icons";
+import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faCalendar } from "@fortawesome/free-solid-svg-icons";
+import "./../AllTrips.css";
 
 const Trips = ({ trips }) => {
   const [searchedString, setSearchedString] = useState("");
   const [searchedTrips, SetSearchedTrips] = useState(trips);
   const [filteredCats, setFilteredCats] = useState([]);
   const [duration, setDuration] = useState("");
-
-
 
   const categories = [
     "adventure",
@@ -47,57 +47,48 @@ const Trips = ({ trips }) => {
 
   useEffect(() => {
     searchedTrips.map((trip) => {
-      console.log(trip.days.length <= duration)
-    })
-  }, [duration])
+      console.log(trip.days.length <= duration);
+    });
+  }, [duration]);
 
   useEffect(() => {
-    let newSearchedTrips
-    let filteredTrips
-    let filteredDuration
-
+    let newSearchedTrips;
+    let filteredTrips;
+    let filteredDuration;
 
     if (searchedString !== "") {
       newSearchedTrips = trips.filter((trip) => {
         return trip.location
-        .toLowerCase()
+          .toLowerCase()
           .includes(searchedString.toLowerCase());
-        });
+      });
       SetSearchedTrips(newSearchedTrips);
-    } else newSearchedTrips = trips
+    } else newSearchedTrips = trips;
 
     if (filteredCats.length > 0) {
-      filteredTrips = newSearchedTrips.filter((trip) => {  
+      filteredTrips = newSearchedTrips.filter((trip) => {
         const result = filteredCats.filter((match) => {
-        if (trip.categories.includes(match)) return trip
-        })
-        if (result.length !== 0) return result
-      })
-      newSearchedTrips = filteredTrips
-        SetSearchedTrips(filteredTrips)
-    } else SetSearchedTrips(newSearchedTrips)
+          if (trip.categories.includes(match)) return trip;
+        });
+        if (result.length !== 0) return result;
+      });
+      newSearchedTrips = filteredTrips;
+      SetSearchedTrips(filteredTrips);
+    } else SetSearchedTrips(newSearchedTrips);
 
     if (duration > 0) {
       filteredDuration = newSearchedTrips.filter((trip) => {
-        if (trip.days.length <= duration) return trip
-      }) 
-      SetSearchedTrips(filteredDuration)
-    } else SetSearchedTrips(newSearchedTrips)
-
+        if (trip.days.length <= duration) return trip;
+      });
+      SetSearchedTrips(filteredDuration);
+    } else SetSearchedTrips(newSearchedTrips);
   }, [trips, searchedString, filteredCats, duration]);
-
-  // console.log(searchedTrips[1].favedBy.length)
-
-
 
   return (
     <div className="tripsbody">
-      <style>
-        @import
-        url('https://fonts.googleapis.com/css2?family=Domine:wght@500&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&display=swap');
-      </style>
-      <h3 className='pagetitle'>Search trips by destination, theme or duration</h3>
+      <h3 className="pagetitle">
+        Search trips by destination, theme or duration
+      </h3>
 
       <div className="searchbar">
         <Search
@@ -106,7 +97,7 @@ const Trips = ({ trips }) => {
         />
 
         <button className="toggleBtn" onClick={toggleBtn}>
-          <i className="fas fa-filter fa-2x"></i>
+          <FontAwesomeIcon icon={faFilter} />
         </button>
       </div>
 
@@ -117,10 +108,7 @@ const Trips = ({ trips }) => {
             callbackFilter={callbackFilter}
           />
 
-          <FilterDays
-            duration={duration}
-            filterDays={setDuration}
-             />
+          <FilterDays duration={duration} filterDays={setDuration} />
         </div>
       )}
 
@@ -131,22 +119,23 @@ const Trips = ({ trips }) => {
           return (
             <div className="trip" key={trip._id}>
               <Link to={trip._id}>
+                <div className="triptext">
+                  <h3 className="title">{trip.title}</h3>
+                  <p>{trip.description}</p>
+                  <p>
+                    <FontAwesomeIcon icon={faMapMarkerAlt} /> {trip.location}
+                  </p>
+                  <p>{trip.categories.join(", ")}</p>
+                  <p>Contributor: {trip.author.username}</p>
+                  <p>
+                    {trip.favedBy.length} <FontAwesomeIcon icon={faHeart} />
+                  </p>
+                </div>
 
-              <div className='triptext'>
-              <h3 className="title">{trip.title}</h3>
-              <p>{trip.description}</p>
-              <p>
-              <i className="fas fa-map-marker-alt"></i> {trip.location}
-              </p>
-              <p>{trip.categories.join(", ")}</p>
-              <p>Contributor: {trip.author.username}</p>
-              <p>{trip.favedBy.length} <i className="fa-solid fa-heart"></i></p>
-              </div>
-              
-              <img src={trip.image[0]} alt="" />
-              <p className="daynumber">
-                <i className="far fa-calendar-alt"></i> DAYS: {trip.days.length}
-              </p>
+                <img src={trip.image[0]} alt="" />
+                <p className="daynumber">
+                  <FontAwesomeIcon icon={faCalendar} /> DAYS: {trip.days.length}
+                </p>
               </Link>
             </div>
           );

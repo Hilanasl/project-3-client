@@ -6,15 +6,12 @@ const Navbar = () => {
   const { isLoggedIn, removeUser } = useAuth();
   return (
     <div className="navbar">
-    <style>
-    @import
-      url('https://fonts.googleapis.com/css2?family=Domine:wght@500&display=swap');  
-    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&display=swap');
-    </style>
       <NavLink to="/">Home</NavLink>
       <NavLink to="/trips">Trips</NavLink>
 
-      <a href="/"><h1 className='logo'>bon voyage</h1></a>
+      <a href="/">
+        <h1 className="logo">bon voyage</h1>
+      </a>
 
       {!isLoggedIn && (
         <>

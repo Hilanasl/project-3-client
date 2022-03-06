@@ -7,6 +7,9 @@ import MapContainer from "../Components/MapContainer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { faLightbulb } from "@fortawesome/free-solid-svg-icons";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faSun } from "@fortawesome/free-solid-svg-icons";
+import { faCloudShowersHeavy } from "@fortawesome/free-solid-svg-icons";
 import styles from "./TripDetails.module.css";
 
 const TripDetails = ({ favesClick, faves }) => {
@@ -41,19 +44,23 @@ const TripDetails = ({ favesClick, faves }) => {
           </div>
           <h3>
             Favourited by: {trip.favedBy.length}{" "}
-            <i className="fa-solid fa-heart"></i>
+            <FontAwesomeIcon className={styles.fontIcons} icon={faHeart} />
           </h3>
           {isLoggedIn && (
             <div className="tripsbtn">
               {!faves.includes(id) && (
                 <button onClick={() => favesClick(id)}>
-                  Favourite <i className="fa-solid fa-sun"></i>
+                  Favourite{" "}
+                  <FontAwesomeIcon className={styles.fontIcons} icon={faSun} />
                 </button>
               )}
               {faves.includes(id) && (
                 <button onClick={() => favesClick(id)}>
                   Unfavourite{" "}
-                  <i className="fa-solid fa-cloud-showers-heavy"></i>
+                  <FontAwesomeIcon
+                    className={styles.fontIcons}
+                    icon={faCloudShowersHeavy}
+                  />
                 </button>
               )}
             </div>

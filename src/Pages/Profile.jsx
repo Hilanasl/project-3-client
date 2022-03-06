@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import styles from "./Profile.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import apiHandler from "./../api/apiHandler";
 import useAuth from "./../auth/useAuth";
 
@@ -45,13 +46,6 @@ const Profile = () => {
 
   return (
     <div className={styles.profileWrapper}>
-      <style>
-        @import
-        url('https://fonts.googleapis.com/css2?family=Domine:wght@500&display=swap');
-        @import
-        url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&display=swap');
-      </style>
-
       <div className={styles.profileSection}>
         <section className={styles.addTripContainer}>
           <div className={styles.createtrip}>
@@ -74,7 +68,7 @@ const Profile = () => {
                   <p className={styles.proftriptitle}>{trip.title}</p>
                   <p>{trip.description}</p>
                   <p>
-                    <i className="fas fa-map-marker-alt"></i> {trip.location}
+                    <FontAwesomeIcon icon={faMapMarkerAlt} /> {trip.location}
                   </p>
                   <img src={trip?.image[0]} alt="" />
 

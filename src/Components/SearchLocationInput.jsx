@@ -64,8 +64,6 @@ function SearchLocationInput({ address, activityChange, activityNumber }) {
     //setQuery((prev) => ({ ...prev, value: event.target.value }));
   };
 
-  console.log("> QUERY >>>", query);
-
   return (
     <div className="search-location-input">
       <label htmlFor={"address-" + activityNumber}>Address</label>

@@ -48,6 +48,7 @@
 .biggerPic {
   width: 50vw;
   max-height: 80vh;
+  object-fit: cover;
 }
 
 .detailsHeader h1 {

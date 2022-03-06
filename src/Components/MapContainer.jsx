@@ -19,13 +19,6 @@ const MapContainer = ({ id }) => {
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(success);
-    // apiHandler.get(`/trips/${id}`).then((trip) => {
-    //   setCurrentPosition((state) => {
-    //     state.lat = trip.data.days[0].activities[0]?.coords?.coordinates[0];
-    //     state.lng = trip.data.days[0].activities[0]?.coords?.coordinates[1];
-    //     return state;
-    //   });
-    // });
   });
 
   const onMarkerDragEnd = (e) => {

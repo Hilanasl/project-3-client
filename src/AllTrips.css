@@ -1,10 +1,9 @@
 .tripsbody {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #e1e1e1;
-    font-family: "Open Sans", sans-serif;
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #e1e1e1;
+  font-family: "Open Sans", sans-serif;
 }
 
 .tripsbody .pagetitle {
@@ -14,105 +13,101 @@
   font-weight: 400;
 }
 
-
-
 .searchbar {
-    display: flex;
-    margin: 5px
+  display: flex;
+  margin: 5px;
 }
 
 .instruct {
-    color: rgb(48, 47, 47)
+  color: rgb(48, 47, 47);
 }
 
 .tripscontainer {
-    display: flex;
-    max-height: 90vh; 
-    width: 95vw;
-    padding: 5px;
-    overflow: scroll;
-    justify-content: space-between;
-  }
-
-  .tripscontainer i {
-    color: whitesmoke
-  }
-  
-  .trip {
-    max-width: 20vw;
-    min-width: 20vw;
-    margin: 10px;
-    padding: 10px;
-    background-color: rgba(37, 50, 71);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    color: rgb(234, 237, 241);
-  }
-
-  .trip p {
-    font-family: "Open Sans", sans-serif;
-    font-size: 17px;
-    color: rgb(234, 237, 241);
-
-  }
-
-  .triptext {
-    height: 300px
-  }
-
-  .title {
-    font-family: 'Domine', serif;
-    font-size: 20px;
-    color: rgb(234, 237, 241);
+  display: flex;
+  max-height: 90vh;
+  width: 95vw;
+  padding: 5px;
+  overflow: scroll;
+  justify-content: space-between;
 }
-  
-  .trip img {
-    width: 19vw;
-    height: 15vw;
-    object-fit: cover;
-  }
-  
-  .daynumber, .trip a {
-    text-decoration: none;
-  }
-  
-  .search {
-    width: 40vw;
-    height: 2vw;
-    padding: 4px;
-    font-style: italic;
-    font-size: 16px;
-    background-color: #e1e1e1;
-    border: 2px solid rgb(190, 97, 61);
-  }
-  
-  .catfilters {
-    display: flex;
-    flex-wrap: wrap;
-    max-width: 40vw;
-    justify-content: center;
-    gap: 5px;
-    margin: 10px;
-    color: rgb(48, 47, 47)
-  }
 
+.tripscontainer i {
+  color: whitesmoke;
+}
 
-  
-  .toggleBtn {
-    background-color: #e1e1e1;
-    font-size: 15px;
-    margin: 5px;
-    border-style: none;
-    color: rgb(190, 97, 61)
-  }
+.trip {
+  max-width: 20vw;
+  min-width: 20vw;
+  margin: 10px;
+  padding: 10px;
+  background-color: rgba(37, 50, 71);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: rgb(234, 237, 241);
+}
 
-  .filters {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px
-  }
+.trip p {
+  font-family: "Open Sans", sans-serif;
+  font-size: 17px;
+  color: rgb(234, 237, 241);
+}
 
+.triptext {
+  height: 300px;
+}
+
+.title {
+  font-family: "Domine", serif;
+  font-size: 20px;
+  color: rgb(234, 237, 241);
+}
+
+.trip img {
+  width: 19vw;
+  height: 15vw;
+  object-fit: cover;
+}
+
+.daynumber,
+.trip a {
+  text-decoration: none;
+}
+
+.search {
+  width: 40vw;
+  height: 2vw;
+  padding: 4px;
+  font-style: italic;
+  font-size: 16px;
+  background-color: #e1e1e1;
+  border: 2px solid rgb(190, 97, 61);
+}
+
+.catfilters {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 40vw;
+  justify-content: center;
+  gap: 5px;
+  margin: 10px;
+  color: rgb(48, 47, 47);
+}
+
+.toggleBtn {
+  background-color: #e1e1e1;
+  font-size: 25px;
+  margin: 5px;
+  border-style: none;
+  color: rgb(190, 97, 61);
+  cursor: pointer;
+}
+
+.filters {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
 
 .duration {
   width: 40px;
